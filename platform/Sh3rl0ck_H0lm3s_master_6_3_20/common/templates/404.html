@@ -1,0 +1,16 @@
+{% extends "base_auth.html" %}
+
+{% block auth_base_class %}page-not-found{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-9 col-lg-8 mx-auto">
+            <div class="text-center">
+                <h2 class="login-heading mb-4">Ouch!</h2>
+                <h5 class="mb-4">Página no encontrada</h5>
+                <a class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                   href="{% url 'home' %}">Ir a la home</a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,853 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <autrilla14@alumno.uned.es>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-22 17:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <autrilla14@alumno.uned.es>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Sh3rl0ck_H0lm3s/settings.py:173
+msgid "Español"
+msgstr ""
+
+#: common/templates/base_form.html:16 common/templates/pagination.html:22
+msgid "Siguiente"
+msgstr ""
+
+#: common/templates/footer.html:10 common/templates/footer_logos.html:39
+msgid "Dpto. Sistemas de Comunicación y Control"
+msgstr ""
+
+#: common/templates/list_panel.html:18 common/templates/list_view.html:23
+msgid "No hay elementos"
+msgstr ""
+
+#: common/templates/messages.html:26
+msgid "Error"
+msgstr ""
+
+#: common/templates/messages.html:28
+msgid "Aviso"
+msgstr ""
+
+#: common/templates/messages.html:30
+msgid "Confirmación"
+msgstr ""
+
+#: common/templates/messages.html:32
+msgid "Información"
+msgstr ""
+
+#: common/templates/navbar.html:11 game/templates/case_list.html:24
+#: game/templates/game_list.html:7
+msgid "Inicio"
+msgstr ""
+
+#: common/templates/navbar.html:20
+msgid "Jugar"
+msgstr ""
+
+#: common/templates/navbar.html:26
+msgid "Gestión"
+msgstr ""
+
+#: common/templates/navbar.html:29
+msgid "Importar datos de Juego"
+msgstr ""
+
+#: common/templates/navbar.html:30
+msgid "Importar usuarios"
+msgstr ""
+
+#: common/templates/navbar.html:32
+msgid "Grupos de usuarios"
+msgstr ""
+
+#: common/templates/navbar.html:34
+msgid "Administrar BBDD"
+msgstr ""
+
+#: common/templates/navbar.html:41
+msgid "Cerrar sesión"
+msgstr ""
+
+#: common/templates/navbar.html:44
+msgid "Iniciar sesión"
+msgstr ""
+
+#: common/templates/navbar.html:60
+msgid "mensajes sin leer"
+msgstr ""
+
+#: common/templates/navbar.html:64
+msgid "Salir del juego"
+msgstr ""
+
+#: common/templates/pagination.html:6
+msgid "Anterior"
+msgstr ""
+
+#: common/templates/registration/password_change_done.html:8
+msgid "Your password was changed."
+msgstr ""
+
+#: common/templates/registration/password_change_form.html:7
+msgid "Old password"
+msgstr ""
+
+#: common/templates/registration/password_change_form.html:8
+msgid "New password"
+msgstr ""
+
+#: common/templates/registration/password_change_form.html:9
+msgid "New password confirmation"
+msgstr ""
+
+#: common/templates/registration/password_change_form.html:30
+#: player/templates/registration/login.html:33
+msgid "Please correct the error below."
+msgstr ""
+
+#: common/templates/registration/password_change_form.html:31
+#: player/templates/registration/login.html:34
+msgid "Please correct the errors below."
+msgstr ""
+
+#: common/templates/registration/password_change_form.html:34
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: common/templates/registration/password_change_form.html:70
+#: common/templates/registration/password_reset_confirm.html:46
+msgid "Change my password"
+msgstr ""
+
+#: common/templates/registration/password_reset_complete.html:12
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: common/templates/registration/password_reset_complete.html:14
+#: common/templates/registration/password_reset_done.html:15
+#: player/templates/registration/login.html:30
+#: player/templates/registration/login.html:79
+msgid "Log in"
+msgstr ""
+
+#: common/templates/registration/password_reset_confirm.html:9
+msgid "New password:"
+msgstr ""
+
+#: common/templates/registration/password_reset_confirm.html:10
+msgid "Confirm password:"
+msgstr ""
+
+#: common/templates/registration/password_reset_confirm.html:25
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: common/templates/registration/password_reset_confirm.html:54
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: common/templates/registration/password_reset_done.html:11
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: common/templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: common/templates/registration/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: common/templates/registration/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: common/templates/registration/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: common/templates/registration/password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: common/templates/registration/password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: common/templates/registration/password_reset_form.html:7
+msgid "Email address:"
+msgstr ""
+
+#: common/templates/registration/password_reset_form.html:19
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+
+#: common/templates/registration/password_reset_form.html:33
+msgid "Reset my password"
+msgstr ""
+
+#: common/templates/registration/password_reset_subject.txt:2
+#, python-format
+msgid "Password reset on %(site_name)s"
+msgstr ""
+
+#: common/validators.py:10
+#, python-format
+msgid "%s no es un posible valor"
+msgstr ""
+
+#: common/validators.py:20
+msgid "Extensión del fichero no soportada."
+msgstr ""
+
+#: game/decorators.py:51 game/decorators.py:88
+msgid "Carece de permiso para acceder a la página solicitada"
+msgstr ""
+
+#: game/forms.py:44
+msgid "Root del XML"
+msgstr ""
+
+#: game/forms.py:46 importer/forms.py:149
+msgid "Fichero XML"
+msgstr ""
+
+#: game/forms.py:52 importer/forms.py:218 player/templates/course_list.html:8
+msgid "Asignatura"
+msgstr ""
+
+#: game/forms.py:55 game/templates/game_list.html:9
+msgid "Juego"
+msgstr ""
+
+#: game/forms.py:82
+msgid "Introduzca la clave encontrada"
+msgstr ""
+
+#: game/forms.py:88
+msgid "Clave encontrada"
+msgstr ""
+
+#: game/forms.py:89
+msgid "Comentarios de su solución"
+msgstr ""
+
+#: game/forms.py:91
+msgid ""
+"En este campo puede detallar los pasos dados hasta llegar a la solución. "
+"Estos comentarios podrán ser visibles por otros compañeros que también lo "
+"hayan resuelto."
+msgstr ""
+
+#: game/templates/case_detail.html:8 game/templates/event_detail.html:12
+msgid "Ver la clasificación del caso"
+msgstr ""
+
+#: game/templates/case_detail.html:24 game/templates/case_ranking.html:17
+#: game/templates/event_detail.html:28
+#: player/templates/users_group_form.html:12
+msgid "Usuario"
+msgstr ""
+
+#: game/templates/case_detail.html:25 game/templates/case_ranking.html:18
+msgid "Misiones resueltas"
+msgstr ""
+
+#: game/templates/case_detail.html:26 game/templates/case_ranking.html:19
+msgid "Claves halladas"
+msgstr ""
+
+#: game/templates/case_detail.html:27 game/templates/case_ranking.html:20
+#: game/templates/event_detail.html:32
+msgid "Puntuación"
+msgstr ""
+
+#: game/templates/case_detail.html:34 game/templates/event_detail.html:39
+msgid "Usted no ha completado esta misión"
+msgstr ""
+
+#: game/templates/case_finished_dialog.html:8
+msgid "¡Caso resuelto!"
+msgstr ""
+
+#: game/templates/case_finished_dialog.html:11
+msgid "Has completado con éxito los retos planteados ¡Enhorabuena!"
+msgstr ""
+
+#: game/templates/case_finished_dialog.html:15
+msgid "Ver clasificación"
+msgstr ""
+
+#: game/templates/case_list.html:10
+msgid "Casos en curso"
+msgstr ""
+
+#: game/templates/case_list.html:14
+msgid "Casos finalizados"
+msgstr ""
+
+#: game/templates/case_list.html:27
+msgid "Caso"
+msgstr ""
+
+#: game/templates/case_list.html:33
+msgid "No hay casos"
+msgstr ""
+
+#: game/templates/case_list.html:50
+msgid "Caso finalizado el "
+msgstr ""
+
+#: game/templates/case_list.html:52
+msgid "Caso iniciado el "
+msgstr ""
+
+#: game/templates/case_list.html:66
+msgid "Mostrar detalles"
+msgstr ""
+
+#: game/templates/case_list.html:88
+msgid "Cerrar"
+msgstr ""
+
+#: game/templates/case_list.html:92
+msgid "Configurando el caso. Por favor, espere."
+msgstr ""
+
+#: game/templates/case_list.html:94
+msgid "Empezar caso"
+msgstr ""
+
+#: game/templates/chat_panel.html:12
+msgid "Contactos"
+msgstr ""
+
+#: game/templates/chat_panel.html:37
+msgid "está conectado"
+msgstr ""
+
+#: game/templates/chat_panel.html:71
+msgid "Chat con "
+msgstr ""
+
+#: game/templates/chat_panel.html:73
+msgid "Mensajes"
+msgstr ""
+
+#: game/templates/chat_panel.html:112
+msgid "Funcionalidad no disponible actualmente"
+msgstr ""
+
+#: game/templates/chat_panel.html:116
+msgid "Escribe tu mensaje..."
+msgstr ""
+
+#: game/templates/clue_bar.html:5
+msgid "No hay pruebas"
+msgstr ""
+
+#: game/templates/clue_bar.html:12
+msgid "Descargar"
+msgstr ""
+
+#: game/templates/event_detail.html:8
+msgid "Informe no disponible"
+msgstr ""
+
+#: game/templates/event_detail.html:29
+msgid "Artefacto"
+msgstr ""
+
+#: game/templates/event_detail.html:30
+msgid "Tipo de prueba"
+msgstr ""
+
+#: game/templates/event_detail.html:31 game/templates/event_detail.html:54
+msgid "Informe de solución"
+msgstr ""
+
+#: game/templates/event_detail.html:33
+msgid "Valoración jugadores"
+msgstr ""
+
+#: game/templates/event_detail.html:55
+msgid "Ver informe"
+msgstr ""
+
+#: game/templates/event_detail.html:65
+msgid "Valorado por:"
+msgstr ""
+
+#: game/templates/game_list.html:13
+msgid "No hay juegos"
+msgstr ""
+
+#: game/templates/game_list.html:17
+msgid "Seleccionar Juego"
+msgstr ""
+
+#: game/templates/game_list.html:18
+msgid "Publicado el "
+msgstr ""
+
+#: game/templates/game_view.html:24
+msgid "VALIDAR"
+msgstr ""
+
+#: game/templates/game_view.html:39
+msgid "¡CLAVE ENCONTRADA!"
+msgstr ""
+
+#: game/templates/game_view.html:45
+msgid "Prueba:"
+msgstr ""
+
+#: game/templates/game_view.html:50
+msgid "Puntuación:"
+msgstr ""
+
+#: game/templates/game_view.html:57 game/templates/game_view.html:76
+#: player/templates/users_management.html:21
+msgid "Continuar"
+msgstr ""
+
+#: game/views.py:103
+msgid "Debe seleccionar un juego"
+msgstr ""
+
+#: game/views.py:122
+msgid "Selección de Juego"
+msgstr ""
+
+#: game/views.py:158
+#, python-format
+msgid "No se ha levantado ningún contenedor para la imagen %s"
+msgstr ""
+
+#: game/views.py:185
+msgid ""
+"Se ha producido un error inesperado. Pruebe de nuevo pasado unos instantes."
+msgstr ""
+
+#: game/views.py:208
+msgid "Selección de caso"
+msgstr ""
+
+#: game/views.py:304 game/views.py:317
+msgid "Pruebas"
+msgstr ""
+
+#: game/views.py:342 game/views.py:919
+#, python-format
+msgid "Caso %s no encontrado."
+msgstr ""
+
+#: game/views.py:346
+#, python-format
+msgid "Clasificación del caso %s"
+msgstr ""
+
+#: game/views.py:383 game/views.py:394
+msgid "El código introducido no es válido."
+msgstr ""
+
+#: game/views.py:396
+msgid "El código introducido no es válido en este momento."
+msgstr ""
+
+#: game/views.py:403
+msgid "Este código ya ha sido validado."
+msgstr ""
+
+#: game/views.py:411
+msgid "Error de configuración. Vuelva a seleccionar el caso."
+msgstr ""
+
+#: game/views.py:413
+msgid "Este campo es requerido."
+msgstr ""
+
+#: game/views.py:447
+msgid ""
+"¡Bien hecho! Pero no es la clave necesaria para continuar la historia. Sigue "
+"buscando."
+msgstr ""
+
+#: game/views.py:693
+msgid "Se ha producido un error al desbloquear la siguiente misión."
+msgstr ""
+
+#: game/views.py:912
+msgid "El caso no esta asignado al usuario indicado."
+msgstr ""
+
+#: game/views.py:945
+msgid "Estado del caso {} para el usuario {}"
+msgstr ""
+
+#: game/views.py:964
+msgid "La misión no esta asignada al usuario indicado."
+msgstr ""
+
+#: game/views.py:971
+msgid "Misión no encontrada."
+msgstr ""
+
+#: importer/forms.py:22
+msgid "Fichero ZIP"
+msgstr ""
+
+#: importer/forms.py:55
+#, python-format
+msgid "El fichero \"%s\" del ZIP está corrupto."
+msgstr ""
+
+#: importer/forms.py:58
+msgid "El fichero subido no es un ZIP."
+msgstr ""
+
+#: importer/forms.py:125
+msgid "Fichero XML a importar"
+msgstr ""
+
+#: importer/forms.py:219
+msgid "Año"
+msgstr ""
+
+#: importer/importBusiness.py:145
+#, python-format
+msgid "HidingType ya existe y está asignado para la herramienta %s"
+msgstr ""
+
+#: importer/importBusiness.py:269
+#, python-format
+msgid "No se ha encontrado ninguna herramienta con id %d"
+msgstr ""
+
+#: importer/importBusiness.py:297
+#, python-format
+msgid "No se ha encontrado ningun hidingType con id %d"
+msgstr ""
+
+#: importer/importBusiness.py:377
+#, python-format
+msgid "No se ha encontrado ningún juego con id %d"
+msgstr ""
+
+#: importer/importBusiness.py:463
+#, python-format
+msgid "No se ha encontrado ninguna asignatura con id %d"
+msgstr ""
+
+#: importer/importers.py:62
+msgid "Tipo de modelo no valido. Tiene que ser 'model' o 'users'."
+msgstr ""
+
+#: importer/templates/import_data.html:17
+msgid ""
+"Adjunte un fichero comprimido ZIP que contenga los recursos necesarios así "
+"como un fichero XML que conforme el guion de importación en base a"
+msgstr ""
+
+#: importer/templates/import_data.html:19
+#: importer/templates/import_users.html:20
+msgid "este esquema XSD"
+msgstr ""
+
+#: importer/templates/import_data.html:25
+msgid "Importar"
+msgstr ""
+
+#: importer/templates/import_users.html:18
+msgid ""
+"Adjunte un fichero XML que contenga los usuarios a dar de alta en base a"
+msgstr ""
+
+#: importer/templates/import_users.html:25 importer/views.py:51
+msgid "Subir"
+msgstr ""
+
+#: importer/templates/select_xml_file.html:14
+msgid "Seleccionar"
+msgstr ""
+
+#: importer/views.py:41
+msgid "No se han encontrado ficheros xml en la raíz"
+msgstr ""
+
+#: importer/views.py:50
+msgid "Importar Datos de Juego"
+msgstr ""
+
+#: importer/views.py:65
+msgid "El XML no es válido"
+msgstr ""
+
+#: importer/views.py:68
+msgid "La Importación se ha realizado satisfactoriamente"
+msgstr ""
+
+#: importer/views.py:98
+msgid "Seleccionar XML a importar"
+msgstr ""
+
+#: importer/views.py:114
+msgid "No se ha espeficiado un XML válido"
+msgstr ""
+
+#: importer/views.py:121
+msgid "XML no válido"
+msgstr ""
+
+#: importer/views.py:127
+msgid "Importar Usuarios"
+msgstr ""
+
+#: player/business.py:160
+#, python-format
+msgid ""
+"No se puede dar de alta el usuario %s, ya existe en bbdd con un email "
+"diferente."
+msgstr ""
+
+#: player/templates/course_list.html:12
+msgid "No hay asignaturas"
+msgstr ""
+
+#: player/templates/course_list.html:16
+msgid "Año:"
+msgstr ""
+
+#: player/templates/course_list.html:17
+msgid "Departamento:"
+msgstr ""
+
+#: player/templates/course_list.html:21
+msgid "Acrónimo:"
+msgstr ""
+
+#: player/templates/course_list.html:24
+msgid "Seleccionar Asignatura"
+msgstr ""
+
+#: player/templates/registration/login.html:15
+msgid "username"
+msgstr ""
+
+#: player/templates/registration/login.html:16
+msgid "password"
+msgstr ""
+
+#: player/templates/registration/login.html:49
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: player/templates/registration/login.html:85
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: player/templates/registration/new_user.html:2
+#, python-format
+msgid "Hola %(user.get_username)s."
+msgstr ""
+
+#: player/templates/registration/new_user.html:3
+#, python-format
+msgid "Bienvenido a %(site_name)s."
+msgstr ""
+
+#: player/templates/registration/new_user.html:5
+msgid "Tu cuenta de usuario ha sido creada correctamente en "
+msgstr ""
+
+#: player/templates/registration/new_user.html:7
+msgid "Esperamos que disfrute de los juegos que tiene disponibles."
+msgstr ""
+
+#: player/templates/registration/new_user.html:9
+msgid "Sus credenciales de acceso son las siguientes:"
+msgstr ""
+
+#: player/templates/registration/new_user.html:11
+msgid "Nombre de usuario: "
+msgstr ""
+
+#: player/templates/registration/new_user.html:12
+msgid "Contraseña: "
+msgstr ""
+
+#: player/templates/registration/new_user.html:14
+msgid "Por favor, modifique de inmediato la contraseña pulsando "
+msgstr ""
+
+#: player/templates/registration/new_user.html:14
+msgid "aquí"
+msgstr ""
+
+#: player/templates/registration/new_user.html:16
+#, python-format
+msgid "El equipo %(site_name)s"
+msgstr ""
+
+#: player/templates/registration/new_user_subject.txt:2
+#, python-format
+msgid "Bienvenido a %(site_name)s"
+msgstr ""
+
+#: player/templates/users_group_form.html:13
+msgid "Correo electrónico"
+msgstr ""
+
+#: player/templates/users_group_form.html:14
+msgid "Pertenece al grupo..."
+msgstr ""
+
+#: player/templates/users_group_form.html:15
+msgid "Habilitado"
+msgstr ""
+
+#: player/templates/users_group_form.html:22
+msgid "Profesor"
+msgstr ""
+
+#: player/templates/users_group_form.html:22
+msgid "Alumno"
+msgstr ""
+
+#: player/templates/users_group_form.html:31
+msgid "Sin grupo"
+msgstr ""
+
+#: player/templates/users_group_form.html:32
+msgid "Nuevo grupo"
+msgstr ""
+
+#: player/templates/users_group_form.html:63
+msgid "Nuevo Grupo para "
+msgstr ""
+
+#: player/templates/users_group_form.html:71
+msgid "Nombre del grupo:"
+msgstr ""
+
+#: player/templates/users_group_form.html:77
+msgid "Cancelar"
+msgstr ""
+
+#: player/templates/users_group_form.html:78
+msgid "Crear Grupo"
+msgstr ""
+
+#: player/templates/users_management.html:15
+msgid "Seleccione la asignatura y el año del curso."
+msgstr ""
+
+#: player/templates/users_management.html:20
+msgid "Procesando..."
+msgstr ""
+
+#: player/templates/widgets/custom_file_input.html:10
+msgid "Subir fichero"
+msgstr ""
+
+#: player/templates/widgets/custom_file_input.html:12
+msgid "Ningún archivo seleccionado"
+msgstr ""
+
+#: player/validators.py:10
+#, python-format
+msgid "%s no es un valor de año válido"
+msgstr ""
+
+#: player/views.py:31
+msgid "Debe seleccionar una asignatura"
+msgstr ""
+
+#: player/views.py:41
+msgid "El usuario no está asignado a ninguna asignatura."
+msgstr ""
+
+#: player/views.py:49
+msgid "Selección de Asignatura"
+msgstr ""
+
+#: player/views.py:55
+msgid "Usuario no recuperado"
+msgstr ""
+
+#: player/views.py:67
+msgid "Gestión de Grupos de Usuarios"
+msgstr ""
+
+#: player/views.py:112
+msgid "Cambio realizado con exito."
+msgstr ""
+
+#: player/views.py:114
+msgid "Rellene todos los campos obligatorios."
+msgstr ""
+
+#: player/views.py:141 player/views.py:145 player/views.py:151
+msgid "Ha ocurrido un problema al crear el grupo."
+msgstr ""
+
+#: player/views.py:176 player/views.py:182 player/views.py:186
+#: player/views.py:192 player/views.py:199 player/views.py:209
+msgid "Ha ocurrido un problema al cambiar de grupo."
+msgstr ""
+
+#~ msgid "close"
+#~ msgstr "cerrar"
+
+#~ msgid "This field is required."
+#~ msgstr "El campo es obligatorio."
+
+#~ msgid "Enter a valid value."
+#~ msgstr "Introduzca un valor válido."
+
+#~ msgid "Messages"
+#~ msgstr "Mensajes"
+
+#, fuzzy
+#~| msgid "Messages"
+#~ msgid "message"
+#~ msgstr "Mensajes"
+
+#, fuzzy
+#~| msgid "Messages"
+#~ msgid "messages"
+#~ msgstr "Mensajes"

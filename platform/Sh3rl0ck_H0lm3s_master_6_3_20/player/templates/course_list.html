@@ -1,0 +1,24 @@
+{% extends "list_view.html" %}
+
+{% load i18n %}
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{% trans "Asignatura" %}</li>
+        </ol>
+    </nav>
+{% endblock %}
+{% block no_items_text %}{% trans "No hay asignaturas" %}{% endblock %}
+{% block item_img_url %}{{ item.course.course_image }}{% endblock %}
+{% block item_name %}{{ item.course.name }}{% endblock %}
+{% block item_description %}
+    <p>{% trans "Año:" %} <span class="text-muted">{{ item.year }}</span></p>
+    <p>{% trans "Departamento:" %}
+        <a class="text-muted" href="{{ item.course.department.url }}"
+           target="_blank">{{ item.course.department.name }}</a>
+    </p>
+    </p>{% trans 'Acrónimo:' %}
+    <span class="text-muted">{% if item.course.acronym %}{{ item.course.acronym }}{% else %}-{% endif %}</span>
+{% endblock %}
+{% block select_button_name %}{% trans "Seleccionar Asignatura" %}{% endblock %}

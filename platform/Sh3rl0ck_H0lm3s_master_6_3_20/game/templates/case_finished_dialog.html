@@ -1,0 +1,19 @@
+{% load i18n %}
+<div class="modal fade case-finished" id="gameModalDialog" tabindex="-1" role="dialog"
+     aria-labelledby="modalTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-uppercase" id="modalTitle">{% trans "¡Caso resuelto!" %}</h5>
+            </div>
+            <div class="modal-body">
+                {% trans "Has completado con éxito los retos planteados ¡Enhorabuena!" %}
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'case_ranking' ggc.case.id %}" class="btn btn-primary btn-lg btn-block accept-btn-link" role="button"
+                   aria-pressed="true">{% trans "Ver clasificación" %}</a>
+            </div>
+        </div>
+    </div>
+</div>

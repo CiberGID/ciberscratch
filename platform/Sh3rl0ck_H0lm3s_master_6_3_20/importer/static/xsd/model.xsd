@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://game.sherlock_holmes.com"
+           xmlns:game="https://game.sherlock_holmes.com"
+           elementFormDefault="qualified">
+
+    <xs:element name="game" type="game:Game"/>
+    <xs:complexType name="Game">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[El juego tiene recursos que deben estar contenidos dentro del comprimido para la importación y
+                dentro de la ruta "resources/game/". Por ejemplo, si tenemos una ilustración para el juego llamada
+                "juego.png" el atributo game_image será "resources/game/juego.png". Obviamente, el fichero físico
+                tendrá que ir en esa ruta dentro del comprimido.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="case" type="game:Case"/>
+        </xs:sequence>
+        <xs:attribute name="course_id" type="xs:long" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="published_date" type="xs:dateTime"/>
+        <xs:attribute name="is_published" type="xs:boolean" use="required"/>
+        <xs:attribute name="game_image" type="xs:anyURI"/>
+    </xs:complexType>
+
+    <xs:element name="case" type="game:Case"/>
+    <xs:complexType name="Case">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Case se corresponde con un caso del juego. Los casos tienen recursos que deben estar contenidos
+            dentro del comprimido para la importación y dentro de la ruta "resources/case/<case_name>/".
+            Por ejemplo, si tenemos una ilustración para el caso llamada "caso1.png" y el Dockerfile base para este caso
+            con el nombre "dockerfile_caso1" los atributos case_image y base_img_path serán
+            "resources/case/<case_name>/caso1.png" y "resources/case/<case_name>/dockerfile_caso1" respectivamente.
+            Obviamente, los ficheros físicos tendrán que ir en esa ruta dentro del comprimido.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="character" type="game:Character" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="story" type="game:Story"/>
+            <xs:element name="event" type="game:Event" maxOccurs="unbounded"/>
+            <xs:element name="artifact" type="game:Artifact" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="game_id" type="xs:long"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="published_date" type="xs:dateTime"/>
+        <xs:attribute name="is_published" type="xs:boolean" use="required"/>
+        <xs:attribute name="base_img_path" type="xs:anyURI" use="required"/>
+        <xs:attribute name="case_image" type="xs:anyURI"/>
+        <xs:attribute name="protocol" type="xs:string" default="ssh"/>
+        <xs:attribute name="terminal_username" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="Character">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Los Character son los personajes con los que el jugador podrá interactuar  por alguno de los
+            tipos de historia. Los personajes pueden tener un avatar, en cuyo caso la ruta al fichero estará indicada
+            en el elemento 'avatar_path'. En el caso de que se añada avatar, dicho archivo tendrá que estar contenido
+            en el comprimido en la ruta indicada en el elemento avatar_path.
+            Por ejemplo, si tenemos un avatar para el personaje llamado "avatar1.png" el atributo 'avatar_path' serán
+            "resources/case/<case_name>/characters/avatar1.png". Obviamente, los ficheros físicos tendrán que ir en esa
+            ruta dentro del comprimido.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="character_key" type="xs:ID" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="full_name" type="xs:string" use="required"/>
+        <xs:attribute name="mail_address" type="xs:string"/>
+        <xs:attribute name="avatar_path" type="xs:anyURI"/>
+    </xs:complexType>
+
+    <xs:complexType name="Message">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Los mensajes pueden contener simplemente texto, el cual irá en el elemento 'plane_text', o bien,
+            pueden ser un fichero como por ejemplo un PDF. En ese caso la ruta al fichero estará indicada en el elemento
+            'file_path'.
+            En el caso de que sea un fichero, dicho archivo tendrá que estar contenido en el comprimido en la ruta
+            indicada en el elemento file_path.
+            Por ejemplo, si tenemos un PDF para el mensaje llamado "mensaje1.pdf" el atributo 'file_path' serán
+            "resources/case/<case_name>/messages/mensaje1.pdf". Obviamente, los ficheros físicos tendrán que ir en esa
+            ruta dentro del comprimido.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="plane_text" type="xs:string" minOccurs="0"/>
+            <xs:element name="file_path" type="xs:anyURI" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="order" type="xs:int" default="1"/>
+        <xs:attribute name="delay_to_show" type="xs:int" default="0"/>
+        <xs:attribute name="character_key" type="xs:IDREF"/>
+    </xs:complexType>
+
+    <xs:element name="story" type="game:Story"/>
+    <xs:complexType name="Story">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Story es un fragmento de la historia del caso.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="message" type="game:Message" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="story_type_id" type="xs:long" use="required"/>
+    </xs:complexType>
+
+
+    <xs:element name="story_type" type="game:StoryType"/>
+    <xs:complexType name="StoryType">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Story Type identifica el tipo de historia para los valores permitidos.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="on_screen"/>
+                        <xs:enumeration value="pdf"/>
+                        <xs:enumeration value="chat"/>
+                        <xs:enumeration value="email"/>
+                        <xs:enumeration value="html"/>
+                        <xs:enumeration value="audio"/>
+ 	                <xs:enumeration value="video"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+
+    <xs:element name="event" type="game:Event"/>
+    <xs:complexType name="Event">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Los eventos son las distintas misiones que hay dentro del caso. Cada una de ellas puede tener
+                una historia inicial y puede tener otra a su fin.
+                Los eventos están precedidos de otros eventos, cuya finalización da pie al inicio del nuevo. Este flujo
+                de eventos se indica con el atributo 'event_key' del evento previo, cuyo valor debe ir en el atributo
+                'previous_event_key' del siguiente evento.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="event_intro_story" type="game:Story" minOccurs="0"/>
+            <xs:element name="event_end_story" type="game:Story" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="event_key" type="xs:ID"/>
+        <xs:attribute name="case_id" type="xs:long"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="previous_event_key" type="xs:IDREF"/>
+        <xs:attribute name="previous_event_id" type="xs:long"/>
+        <xs:attribute name="delay_start" type="xs:int"/>
+        <xs:attribute name="onfinish_cancel_active_events" type="xs:boolean" default="false"/>
+    </xs:complexType>
+
+    <xs:element name="artifact_type" type="game:ArtifactType"/>
+    <xs:complexType name="ArtifactType">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Tipos de artefactos soportados.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:element name="artifact" type="game:Artifact"/>
+    <xs:complexType name="Artifact">
+        <xs:annotation>
+            <xs:documentation>
+                    <![CDATA[Artefactos contienen claves (hiddenInfos) que son las que aportan puntuación y pueden solventar eventos.
+                Los artefactos pueden estar asociados a distintos eventos, event_key sirve para asociarlo con el evento
+                que tenga el mismo valor en su campo correspondiente.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="artifact_type" type="game:ArtifactType" />
+            <xs:element name="hidden_info" type="game:HiddenInfo" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="path" type="xs:anyURI"/>
+    </xs:complexType>
+
+    <xs:simpleType name="UUID">
+        <xs:restriction base="xs:string">
+            <xs:length value="36" fixed="true"/>
+            <xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{4}-[8-9a-bA-B][0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="hidden_info" type="game:HiddenInfo"/>
+    <xs:complexType name="HiddenInfo">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Este elemento determina el tipo de información oculta y la puntuación a asignar al alumno por obtenerla.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="toolParamValue" type="game:ToolParamValue" minOccurs="0" maxOccurs="unbounded"/>
+	    <xs:element name="clue" type="game:Clue" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="hiding_type_id" type="xs:long" use="required"/>
+        <xs:attribute name="score" type="xs:int" default="0"/>
+        <xs:attribute name="event_key" type="xs:IDREF"/>
+        <xs:attribute name="is_event_key_info" type="xs:boolean" use="required"/>
+        <xs:attribute name="common_key_code" type="xs:string"/>
+        <xs:attribute name="prefix_key_code" type="xs:string"/>
+        <xs:attribute name="suffix_key_code" type="xs:string"/>
+        <xs:attribute name="random_key_code_word" type="xs:boolean"/>
+        <xs:attribute name="random_word_maxlength" type="xs:int"/>
+    </xs:complexType>
+ 
+      <xs:complexType name="Clue">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Una pista para ayudar al estudiente en el juego.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:element name="clue_text" type="xs:string" use="required"/>
+        <xs:attribute name="order" type="xs:long" use="required"/>
+	<xs:attribute name="cost" type="xs:long"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="ToolParamValue">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Valor para el parámetro de una herramienta.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="param_id" type="xs:long" use="required"/>
+        <xs:attribute name="tool_id" type="xs:long" use="required"/>
+        <xs:attribute name="value" type="xs:string" default=""/>
+        <xs:attribute name="add_key_code" type="xs:boolean" default="false"/>
+    </xs:complexType>
+
+    <xs:element name="hiding_type" type="game:HidingType"/>
+    <xs:complexType name="HidingType">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Determina los tipos de ocultación de información.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:element name="tools" type="game:Tools"/>
+    <xs:complexType name="Tools">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="tool" type="game:Tool"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!--   <xs:element name="tool" type="game:Tool"/> -->
+    <xs:complexType name="Tool">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Tool indica una herramienta para ocultar información dentro de algún elemento.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="hiding_type" type="game:HidingType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="parameter" type="game:ToolParameter" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="command" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="ToolParameter">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Contiene parámetros para una herramienta.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string"/>
+        <xs:attribute name="parameter" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:element name="department" type="game:Department"/>
+    <xs:complexType name="Department">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[El departamento contiene las asignaturas.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="course" type="game:Course"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="url" type="xs:anyURI"/>
+    </xs:complexType>
+
+    <xs:complexType name="Course">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Course se corresponde con una asignatura. Las asignaturas tienen recursos que deben estar
+                contenidos dentro del comprimido para la importación y dentro de la ruta
+                "resources/courses/". Por ejemplo, si tenemos una ilustración para la asignatura llamada
+                "seguridad.png" el atributo course_image serán "resources/courses/seguridad.png".
+                Obviamente, los ficheros físicos tendrán que ir en esa ruta dentro del comprimido.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="acronym" type="xs:string"/>
+        <xs:attribute name="course_image" type="xs:anyURI"/>
+    </xs:complexType>
+</xs:schema>

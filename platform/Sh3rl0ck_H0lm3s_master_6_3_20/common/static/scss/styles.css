@@ -1,0 +1,788 @@
+@font-face {
+  font-family: SimpsonFont;
+  src: url("/static/font/SIMPSONS.TTF"); }
+
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: 0.75rem; }
+
+body {
+  height: 100%;
+  background-color: #e9eaed; }
+  body .pfg {
+    display: table;
+    table-layout: fixed;
+    min-height: 100vh;
+    width: 100%; }
+    body .pfg a {
+      color: #01523f;
+      cursor: pointer; }
+      body .pfg a.badge {
+        color: white; }
+        body .pfg a.badge.badge-warning, body .pfg a.badge.badge-light {
+          color: black; }
+      body .pfg a:not(.badge):hover {
+        color: #022f25; }
+    body .pfg .invalid-feedback {
+      display: block; }
+    body .pfg .col-form-label .asteriskField {
+      color: red; }
+    body .pfg.rounded-input-theme .dropdown-el, body .pfg.rounded-input-theme .select-field {
+      min-width: 12em;
+      position: relative;
+      display: inline-block;
+      margin-right: 1em;
+      min-height: 50px;
+      max-height: 50px;
+      overflow: hidden;
+      cursor: pointer;
+      text-align: left;
+      white-space: nowrap;
+      color: #444;
+      width: 100%;
+      outline: none;
+      border: .06em solid #ced1da;
+      border-radius: 2em;
+      transition: 0.3s all ease-in-out; }
+      body .pfg.rounded-input-theme .dropdown-el:focus, body .pfg.rounded-input-theme .dropdown-el:hover, body .pfg.rounded-input-theme .select-field:focus, body .pfg.rounded-input-theme .select-field:hover {
+        border-color: #016951;
+        box-shadow: 0 0 0 0.2rem rgba(1, 105, 81, 0.5); }
+      body .pfg.rounded-input-theme .dropdown-el input, body .pfg.rounded-input-theme .select-field input {
+        display: none; }
+      body .pfg.rounded-input-theme .dropdown-el label, body .pfg.rounded-input-theme .select-field label {
+        border-top: .06em solid #d9d9d9;
+        display: block;
+        height: 50px;
+        padding-left: 1em;
+        padding-right: 3em;
+        cursor: pointer;
+        position: relative;
+        padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+        padding-bottom: calc(var(--input-padding-y) / 3);
+        transition: 0.3s color ease-in-out; }
+        body .pfg.rounded-input-theme .dropdown-el label:nth-child(2), body .pfg.rounded-input-theme .select-field label:nth-child(2) {
+          margin-top: 50px;
+          border-top: .06em solid #d9d9d9; }
+      body .pfg.rounded-input-theme .dropdown-el input:checked + label, body .pfg.rounded-input-theme .select-field input:checked + label {
+        display: block;
+        border-top: none;
+        position: absolute;
+        top: 0; }
+        body .pfg.rounded-input-theme .dropdown-el input:checked + label:nth-child(2), body .pfg.rounded-input-theme .select-field input:checked + label:nth-child(2) {
+          margin-top: 0;
+          position: relative; }
+      body .pfg.rounded-input-theme .dropdown-el::after, body .pfg.rounded-input-theme .select-field::after {
+        content: "";
+        position: absolute;
+        right: 0.8em;
+        top: 22px;
+        border: 0.3em solid #01523f;
+        border-color: #01523f transparent transparent transparent;
+        transition: .4s all ease-in-out; }
+      body .pfg.rounded-input-theme .dropdown-el.expanded, body .pfg.rounded-input-theme .select-field.expanded {
+        border: 0.06em solid #01523f;
+        background: #fff;
+        border-radius: .25em;
+        padding: 0;
+        box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
+        max-height: 100%; }
+        body .pfg.rounded-input-theme .dropdown-el.expanded div label, body .pfg.rounded-input-theme .select-field.expanded div label {
+          border-top: .06em solid #d9d9d9; }
+          body .pfg.rounded-input-theme .dropdown-el.expanded div label:hover, body .pfg.rounded-input-theme .select-field.expanded div label:hover {
+            color: #01523f; }
+        body .pfg.rounded-input-theme .dropdown-el.expanded div input:checked + label, body .pfg.rounded-input-theme .select-field.expanded div input:checked + label {
+          color: #01523f; }
+        body .pfg.rounded-input-theme .dropdown-el.expanded::after, body .pfg.rounded-input-theme .select-field.expanded::after {
+          transform: rotate(-180deg);
+          top: .55em; }
+    body .pfg.rounded-input-theme .form .form-group:not(#div_id_file), body .pfg.rounded-input-theme .form .form-label-group {
+      position: relative;
+      margin-bottom: 1rem; }
+      body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) select.form-control:focus, body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) select.form-control:hover,
+      body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) textarea.form-control:focus,
+      body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) textarea.form-control:hover,
+      body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) input.form-control:focus,
+      body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) input.form-control:hover, body .pfg.rounded-input-theme .form .form-label-group select.form-control:focus, body .pfg.rounded-input-theme .form .form-label-group select.form-control:hover,
+      body .pfg.rounded-input-theme .form .form-label-group textarea.form-control:focus,
+      body .pfg.rounded-input-theme .form .form-label-group textarea.form-control:hover,
+      body .pfg.rounded-input-theme .form .form-label-group input.form-control:focus,
+      body .pfg.rounded-input-theme .form .form-label-group input.form-control:hover {
+        border-color: #016951;
+        box-shadow: 0 0 0 0.2rem rgba(1, 105, 81, 0.5); }
+      body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) .form-control, body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) .col-form-label, body .pfg.rounded-input-theme .form .form-label-group .form-control, body .pfg.rounded-input-theme .form .form-label-group .col-form-label {
+        padding: var(--input-padding-y) var(--input-padding-x);
+        height: auto;
+        border-radius: 2rem; }
+      body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) .col-form-label, body .pfg.rounded-input-theme .form .form-label-group .col-form-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        margin-bottom: 0;
+        /* Override default `<label>` margin */
+        line-height: 1.5;
+        color: #495057;
+        cursor: text;
+        /* Match the input under the label */
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        transition: all .1s ease-in-out; }
+        body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) .col-form-label.placeholder-hide, body .pfg.rounded-input-theme .form .form-label-group .col-form-label.placeholder-hide {
+          padding-top: calc(var(--input-padding-y) / 3);
+          padding-bottom: calc(var(--input-padding-y) / 3);
+          font-size: 12px;
+          color: #777; }
+        body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) .col-form-label .asteriskField, body .pfg.rounded-input-theme .form .form-label-group .col-form-label .asteriskField {
+          color: red; }
+      body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) .form-control, body .pfg.rounded-input-theme .form .form-label-group .form-control {
+        height: auto !important; }
+        body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) .form-control::placeholder, body .pfg.rounded-input-theme .form .form-label-group .form-control::placeholder {
+          color: transparent; }
+        body .pfg.rounded-input-theme .form .form-group:not(#div_id_file) .form-control:not(:placeholder-shown), body .pfg.rounded-input-theme .form .form-label-group .form-control:not(:placeholder-shown) {
+          padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+          padding-bottom: calc(var(--input-padding-y) / 3); }
+    body .pfg.rounded-input-theme .form #div_id_file > div {
+      display: inline-block;
+      padding-left: 10px; }
+    body .pfg.rounded-input-theme .form .col-form-label .asteriskField {
+      color: red; }
+    body .pfg.rounded-input-theme .form label.input-label {
+      padding: var(--input-padding-x); }
+    body .pfg.rounded-input-theme .form .form-label-group > input, body .pfg.rounded-input-theme .form .form-label-group > select, body .pfg.rounded-input-theme .form .form-label-group > textarea, body .pfg.rounded-input-theme .form .form-label-group > label {
+      padding: var(--input-padding-y) var(--input-padding-x);
+      height: auto;
+      border-radius: 2rem; }
+    body .pfg.rounded-input-theme .form .form-label-group > input:placeholder, body .pfg.rounded-input-theme .form .form-label-group > select:placeholder, body .pfg.rounded-input-theme .form .form-label-group > textarea:placeholder {
+      color: transparent; }
+    body .pfg.rounded-input-theme .form .form-label-group > input:not(:placeholder-shown), body .pfg.rounded-input-theme .form .form-label-group > select:not(:placeholder-shown), body .pfg.rounded-input-theme .form .form-label-group > textarea:not(:placeholder-shown) {
+      padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+      padding-bottom: calc(var(--input-padding-y) / 3); }
+      body .pfg.rounded-input-theme .form .form-label-group > input:not(:placeholder-shown) ~ label, body .pfg.rounded-input-theme .form .form-label-group > select:not(:placeholder-shown) ~ label, body .pfg.rounded-input-theme .form .form-label-group > textarea:not(:placeholder-shown) ~ label {
+        padding-top: calc(var(--input-padding-y) / 3);
+        padding-bottom: calc(var(--input-padding-y) / 3);
+        font-size: 12px;
+        color: #777; }
+    body .pfg.rounded-input-theme .form .form-label-group > select {
+      height: auto !important; }
+    body .pfg.rounded-input-theme .form .form-label-group > label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      margin-bottom: 0;
+      /* Override default `<label>` margin */
+      line-height: 1.5;
+      color: #495057;
+      cursor: text;
+      /* Match the input under the label */
+      border: 1px solid transparent;
+      border-radius: .25rem;
+      transition: all .1s ease-in-out; }
+    body .pfg.rounded-input-theme .form .buttons-bar {
+      margin-top: 50px; }
+    body .pfg .form .form-group:not(#div_id_file) select.form-control:focus, body .pfg .form .form-group:not(#div_id_file) select.form-control:hover,
+    body .pfg .form .form-group:not(#div_id_file) textarea.form-control:focus,
+    body .pfg .form .form-group:not(#div_id_file) textarea.form-control:hover,
+    body .pfg .form .form-group:not(#div_id_file) input.form-control:focus,
+    body .pfg .form .form-group:not(#div_id_file) input.form-control:hover, body .pfg .form .form-label-group select.form-control:focus, body .pfg .form .form-label-group select.form-control:hover,
+    body .pfg .form .form-label-group textarea.form-control:focus,
+    body .pfg .form .form-label-group textarea.form-control:hover,
+    body .pfg .form .form-label-group input.form-control:focus,
+    body .pfg .form .form-label-group input.form-control:hover {
+      border-color: #016951;
+      box-shadow: 0 0 0 0.2rem rgba(1, 105, 81, 0.5); }
+    body .pfg .form #div_id_file > div {
+      display: inline-block;
+      padding-left: 10px; }
+    body .pfg .form .buttons-bar {
+      margin-top: 50px; }
+    body .pfg .loading {
+      cursor: progress; }
+    body .pfg ::-webkit-scrollbar {
+      width: 12px; }
+    body .pfg ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px #c8c8c8;
+      border-radius: 10px; }
+    body .pfg ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(200, 200, 200, 0.7); }
+    body .pfg .btn.chat-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 30px;
+      padding: 0;
+      margin-right: 10px;
+      font-size: 26px; }
+      body .pfg .btn.chat-btn:not(:hover) {
+        background-color: transparent;
+        border: none; }
+      body .pfg .btn.chat-btn span {
+        color: #50a745; }
+      body .pfg .btn.chat-btn:hover span {
+        color: white; }
+    body .pfg .table-panel .table tr.selectable {
+      cursor: pointer; }
+    body .pfg .table-panel .table thead.thead-dark th {
+      background-color: #022f25; }
+    body .pfg .table-panel .table .center-align {
+      text-align: center; }
+    body .pfg .table-panel .table.table-striped.table-hover tbody tr:hover {
+      background-color: rgba(0, 0, 0, 0.075); }
+    body .pfg .table-panel .table.table-striped tbody tr:nth-of-type(odd) {
+      background-color: rgba(172, 215, 203, 0.25); }
+    body .pfg .table-panel .table.table-striped tbody tr.red-color {
+      color: darkred; }
+    body .pfg .badge-primary {
+      color: #fff;
+      background-color: #016951;
+      border-color: #016951; }
+      body .pfg .badge-primary:hover {
+        color: #fff;
+        background-color: #01523f;
+        border-color: #014d3b; }
+      body .pfg .badge-primary:not(:disabled):not(.disabled):active {
+        color: #fff;
+        background-color: #013d2f;
+        border-color: #01382b; }
+      body .pfg .badge-primary:not(:disabled):not(.disabled):active:focus, body .pfg .badge-primary.focus, body .pfg .badge-primary:focus {
+        box-shadow: 0 0 0 0.2rem rgba(1, 105, 81, 0.5); }
+    body .pfg .btn.btn-primary {
+      color: #fff;
+      background-color: #016951;
+      border-color: #016951;
+      font-size: 0.9rem;
+      letter-spacing: 0.05rem;
+      padding: 0.75rem 1rem;
+      text-transform: capitalize; }
+      body .pfg .btn.btn-primary:hover {
+        color: #fff;
+        background-color: #01523f;
+        border-color: #014d3b; }
+      body .pfg .btn.btn-primary:not(:disabled):not(.disabled):active {
+        color: #fff;
+        background-color: #013d2f;
+        border-color: #01382b; }
+      body .pfg .btn.btn-primary:not(:disabled):not(.disabled):active:focus, body .pfg .btn.btn-primary.focus, body .pfg .btn.btn-primary:focus {
+        box-shadow: 0 0 0 0.2rem rgba(1, 105, 81, 0.5); }
+    body .pfg .like-btn {
+      color: #016951; }
+      body .pfg .like-btn .like-count {
+        color: #212529; }
+      body .pfg .like-btn:hover {
+        color: #01523f; }
+    body .pfg .breadcrumb-wrapper .breadcrumb {
+      background-color: #0169513d; }
+    body .pfg .go-ranking-link .go-back-icon {
+      color: #016951;
+      margin-right: 10px; }
+    body .pfg .view-title {
+      margin-top: 2px;
+      padding-bottom: 5px; }
+      body .pfg .view-title .view-title-label {
+        font-weight: 800;
+        font-size: 14px;
+        color: #01523f;
+        text-transform: uppercase; }
+      @media (min-width: 768px) {
+        body .pfg .view-title {
+          padding-bottom: 15px; }
+          body .pfg .view-title .view-title-label {
+            font-size: 20px; } }
+    body .pfg .list-view .non-items {
+      color: #01523f;
+      text-transform: capitalize; }
+    body .pfg .list-view .card-deck {
+      justify-content: center !important; }
+      body .pfg .list-view .card-deck .card {
+        padding-top: 5px;
+        max-width: 33%; }
+        body .pfg .list-view .card-deck .card .card-img-wrapper {
+          max-height: 200px;
+          width: auto; }
+          body .pfg .list-view .card-deck .card .card-img-wrapper > img {
+            height: 100%;
+            width: auto;
+            max-height: inherit; }
+        body .pfg .list-view .card-deck .card .card-body {
+          position: relative; }
+          body .pfg .list-view .card-deck .card .card-body .card-footer-text {
+            position: absolute;
+            bottom: 0;
+            width: calc(100% - 2.50rem); }
+    body .pfg .list-view .pagination {
+      justify-content: center !important;
+      margin-top: 15px; }
+    body .pfg .list-view.select-cases-view .card-deck .card .card-footer {
+      position: relative; }
+      body .pfg .list-view.select-cases-view .card-deck .card .card-footer .ranking-link:before {
+        content: url("/static/image/leaderboard-35.png");
+        position: absolute;
+        bottom: -8px;
+        left: 5px; }
+    @media (max-width: 768px) {
+      body .pfg .list-view .view-title {
+        padding-bottom: 0px; }
+        body .pfg .list-view .view-title .view-title-label {
+          font-size: 16px; }
+      body .pfg .list-view .card-deck .card {
+        max-width: 100%; }
+        body .pfg .list-view .card-deck .card .card-img-wrapper {
+          max-height: 100px; } }
+    body .pfg .case-story-dialog .modal-dialog .modal-content .modal-body,
+    body .pfg .story-dialog .modal-dialog .modal-content .modal-body {
+      height: calc(90vh - 143px);
+      overflow-y: auto; }
+      body .pfg .case-story-dialog .modal-dialog .modal-content .modal-body .message-content,
+      body .pfg .story-dialog .modal-dialog .modal-content .modal-body .message-content {
+        width: 100%;
+        height: 100%; }
+        body .pfg .case-story-dialog .modal-dialog .modal-content .modal-body .message-content > embed,
+        body .pfg .story-dialog .modal-dialog .modal-content .modal-body .message-content > embed {
+          width: 100%;
+          height: 100%; }
+    body .pfg .game-view {
+      padding: 5px;
+      width: 100%;
+      height: auto;
+      display: flex; }
+      body .pfg .game-view .left-sidebar {
+        width: 20%; }
+        @media (min-width: 1440px) {
+          body .pfg .game-view .left-sidebar .clue-wrapper {
+            height: calc(100% - 190px) !important; } }
+        body .pfg .game-view .left-sidebar .clue-wrapper {
+          background-color: white;
+          height: auto;
+          border: 1px solid #e9eaed;
+          border-radius: 5px; }
+        body .pfg .game-view .left-sidebar .key-code-wrapper {
+          background-color: white;
+          margin-top: 10px;
+          height: 180px;
+          border: 1px solid #e9eaed;
+          border-radius: 5px; }
+      body .pfg .game-view .terminal-layout {
+        min-height: 750px;
+        height: auto;
+        width: auto;
+        padding: 5px;
+        overflow: hidden;
+        background-color: black;
+        border: 1px solid #e9eaed;
+        border-radius: 5px; }
+      @media (max-width: 1440px) {
+        body .pfg .game-view {
+          display: block;
+          padding: 0;
+          margin-top: -20px; } }
+      @media (max-width: 1024px) {
+        body .pfg .game-view .terminal-layout {
+          overflow: scroll; } }
+    body .pfg .chat-panel {
+      position: fixed;
+      bottom: 0;
+      right: 15px;
+      margin: 0;
+      opacity: 0.9;
+      z-index: 10; }
+      body .pfg .chat-panel .chat {
+        margin-top: auto;
+        margin-bottom: auto;
+        border-radius: 15px;
+        background: #7F7FD5;
+        background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+        background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); }
+      body .pfg .chat-panel .card {
+        height: 500px;
+        border-radius: 15px !important;
+        background-color: rgba(0, 0, 0, 0.4) !important; }
+      body .pfg .chat-panel .contact-list span {
+        font-size: 20px;
+        color: white; }
+      body .pfg .chat-panel .contacts_body {
+        padding: 0.75rem 0 !important;
+        overflow-y: auto;
+        white-space: nowrap; }
+        body .pfg .chat-panel .contacts_body .search {
+          border-radius: 15px 0 0 15px !important;
+          background-color: rgba(0, 0, 0, 0.3) !important;
+          border: 0 !important;
+          color: white !important; }
+          body .pfg .chat-panel .contacts_body .search:focus {
+            box-shadow: none !important;
+            outline: 0px !important; }
+        body .pfg .chat-panel .contacts_body .contacts {
+          list-style: none;
+          padding: 0; }
+          body .pfg .chat-panel .contacts_body .contacts .contact-wrapper {
+            cursor: pointer;
+            transition: 1s ease; }
+            body .pfg .chat-panel .contacts_body .contacts .contact-wrapper:hover {
+              transform: scale(0.9);
+              transition: 1s ease; }
+            body .pfg .chat-panel .contacts_body .contacts .contact-wrapper .img_cont .badge-unread-contact-messages {
+              position: absolute;
+              left: 0; }
+          body .pfg .chat-panel .contacts_body .contacts li {
+            width: 100% !important;
+            padding: 5px 10px;
+            margin-bottom: 15px !important; }
+        body .pfg .chat-panel .contacts_body .active {
+          background-color: rgba(0, 0, 0, 0.3); }
+      body .pfg .chat-panel .user_img {
+        height: 70px;
+        width: 70px;
+        border: 1.5px solid #f5f6fa; }
+      body .pfg .chat-panel .user-icon {
+        font-size: 70px;
+        text-align: center;
+        overflow: hidden;
+        background-color: #efefef; }
+      body .pfg .chat-panel .user-icon-msg {
+        font-size: 40px;
+        text-align: center;
+        overflow: hidden;
+        background-color: #efefef; }
+      body .pfg .chat-panel .msg_card_body {
+        overflow-y: auto; }
+        body .pfg .chat-panel .msg_card_body .user_img_msg {
+          height: 40px;
+          width: 40px;
+          border: 1.5px solid #f5f6fa; }
+        body .pfg .chat-panel .msg_card_body .img_cont_msg {
+          height: 40px;
+          width: 40px; }
+        body .pfg .chat-panel .msg_card_body .msg_cotainer {
+          margin-top: auto;
+          margin-bottom: auto;
+          margin-left: 10px;
+          border-radius: 25px;
+          background-color: #82ccdd;
+          padding: 10px;
+          position: relative; }
+        body .pfg .chat-panel .msg_card_body .msg_cotainer_send {
+          margin-top: auto;
+          margin-bottom: auto;
+          margin-right: 10px;
+          border-radius: 25px;
+          background-color: #78e08f;
+          padding: 10px;
+          position: relative; }
+          body .pfg .chat-panel .msg_card_body .msg_cotainer_send .msg_time {
+            left: unset;
+            right: 0; }
+        body .pfg .chat-panel .msg_card_body .msg_time {
+          position: absolute;
+          left: 0;
+          bottom: -15px;
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 10px;
+          white-space: nowrap; }
+        body .pfg .chat-panel .msg_card_body .msg_time_send {
+          position: absolute;
+          right: 0;
+          bottom: -15px;
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 10px; }
+      body .pfg .chat-panel .card-header {
+        border-radius: 15px 15px 0 0 !important;
+        border-bottom: 0 !important; }
+      body .pfg .chat-panel .card-footer {
+        border-radius: 0 0 15px 15px !important;
+        border-top: 0 !important; }
+      body .pfg .chat-panel .container {
+        align-content: center; }
+      body .pfg .chat-panel .type_msg {
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        border: 0 !important;
+        color: white !important;
+        height: 60px !important;
+        overflow-y: auto; }
+      body .pfg .chat-panel .type_msg:focus {
+        box-shadow: none !important;
+        outline: 0px !important; }
+      body .pfg .chat-panel .attach_btn {
+        border-radius: 15px 0 0 15px !important;
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        border: 0 !important;
+        color: white !important;
+        cursor: pointer; }
+      body .pfg .chat-panel .send_btn {
+        border-radius: 0 15px 15px 0 !important;
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        border: 0 !important;
+        color: white !important;
+        cursor: pointer; }
+      body .pfg .chat-panel .search_btn {
+        border-radius: 0 15px 15px 0 !important;
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        border: 0 !important;
+        color: white !important;
+        cursor: pointer; }
+      body .pfg .chat-panel .img_cont {
+        position: relative;
+        height: 70px;
+        width: 70px; }
+      body .pfg .chat-panel .online_icon {
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        background-color: #4cd137;
+        border-radius: 50%;
+        bottom: 0.2em;
+        right: 0.4em;
+        border: 1.5px solid white; }
+      body .pfg .chat-panel .offline {
+        background-color: #c23616 !important; }
+      body .pfg .chat-panel .user_info {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 15px; }
+        body .pfg .chat-panel .user_info span {
+          font-size: 20px;
+          color: white; }
+        body .pfg .chat-panel .user_info p {
+          font-size: 10px;
+          color: rgba(255, 255, 255, 0.6); }
+      body .pfg .chat-panel .address-book-btn-wrapper .address-book-btn span {
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        margin-right: 20px; }
+      body .pfg .chat-panel .video_cam {
+        margin-left: 50px;
+        margin-top: 5px; }
+        body .pfg .chat-panel .video_cam span {
+          color: white;
+          font-size: 20px;
+          cursor: pointer;
+          margin-right: 20px; }
+      body .pfg .chat-panel .msg_head {
+        position: relative; }
+      body .pfg .chat-panel #action_menu_btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: white;
+        cursor: pointer;
+        font-size: 20px; }
+      body .pfg .chat-panel .action_menu {
+        z-index: 1;
+        position: absolute;
+        padding: 15px 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border-radius: 15px;
+        top: 30px;
+        right: 15px;
+        display: none; }
+      body .pfg .chat-panel .action_menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0; }
+        body .pfg .chat-panel .action_menu ul li {
+          width: 100%;
+          padding: 10px 15px;
+          margin-bottom: 5px; }
+          body .pfg .chat-panel .action_menu ul li:hover {
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.2); }
+          body .pfg .chat-panel .action_menu ul li i {
+            padding-right: 10px; }
+      @media (max-width: 576px) {
+        body .pfg .chat-panel .contacts_card {
+          margin-bottom: 15px !important; } }
+    body .pfg .event-detail-view .hidden-info-table .table tbody .player-rating-wrapper {
+      width: fit-content; }
+    body .pfg .navbar-wrapper {
+      display: table-row;
+      width: 100%;
+      height: auto;
+      background-color: #01523f; }
+      body .pfg .navbar-wrapper .navbar.top-navbar .navbar-brand,
+      body .pfg .navbar-wrapper .navbar.top-navbar .nav-item .nav-link {
+        font-size: 1.25rem;
+        color: #ffffffbf; }
+        body .pfg .navbar-wrapper .navbar.top-navbar .navbar-brand:hover,
+        body .pfg .navbar-wrapper .navbar.top-navbar .nav-item .nav-link:hover {
+          color: white; }
+      body .pfg .navbar-wrapper .navbar .user-nav {
+        float: right; }
+        @media (min-width: 768px) {
+          body .pfg .navbar-wrapper .navbar .user-nav {
+            position: absolute;
+            right: 0; } }
+        @media (max-width: 768px) {
+          body .pfg .navbar-wrapper .navbar .user-nav {
+            position: relative; } }
+      body .pfg .navbar-wrapper .navbar .chat-btn {
+        position: relative; }
+        body .pfg .navbar-wrapper .navbar .chat-btn .badge-unread-messages {
+          display: block;
+          font-size: 0.6rem;
+          position: absolute;
+          right: 0; }
+        body .pfg .navbar-wrapper .navbar .chat-btn:hover .badge-unread-messages {
+          display: none; }
+      body .pfg .navbar-wrapper .navbar .logout-link {
+        color: white; }
+      @media (max-height: 700px) {
+        body .pfg .navbar-wrapper .navbar {
+          padding-top: 0;
+          padding-bottom: 0; } }
+      body .pfg .navbar-wrapper .navbar .navbar-navitem-game {
+        position: absolute;
+        right: 20%; }
+    body .pfg main {
+      display: table-row;
+      height: 100%;
+      width: 100%;
+      /* contenido comun para botones e inputs */
+      /* FIN contenido comun para botones e inputs */ }
+      @media (max-width: 768px) {
+        body .pfg main .container {
+          padding: 5px; } }
+      @media (max-width: 1080px) {
+        body .pfg main .container {
+          padding: 5px 20px; }
+          body .pfg main .container.no-margin {
+            padding: 0;
+            margin: 0;
+            max-height: calc(100% - 173px);
+            height: calc(100% - 173px); } }
+      @media (min-width: 1080px) {
+        body .pfg main .container {
+          padding: 5px 20px; } }
+      body .pfg main .form-error-message {
+        color: red; }
+      body .pfg main .pagination {
+        justify-content: center !important;
+        margin-top: 15px; }
+        body .pfg main .pagination .page-item .page-link {
+          color: #01523f; }
+        body .pfg main .pagination .page-item.active .page-link {
+          background-color: #01523f;
+          border-color: #01523f;
+          color: white; }
+        body .pfg main .pagination .page-item.disabled .page-link {
+          color: #6c757d; }
+        body .pfg main .pagination .page-item .page-link:focus {
+          box-shadow: 0 0 0 0.2rem rgba(1, 105, 81, 0.5); }
+      body .pfg main .messages-wrapper {
+        position: relative; }
+        body .pfg main .messages-wrapper .toast-poll {
+          z-index: 10; }
+          body .pfg main .messages-wrapper .toast-poll .toast.alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb; }
+            body .pfg main .messages-wrapper .toast-poll .toast.alert-danger .toast-header {
+              color: #721c24;
+              background-color: #ffc5ca; }
+            body .pfg main .messages-wrapper .toast-poll .toast.alert-danger .toast-icon {
+              color: darkred; }
+          body .pfg main .messages-wrapper .toast-poll .toast.alert-warning {
+            background-color: #fff3cd;
+            border-color: #ffeeba; }
+            body .pfg main .messages-wrapper .toast-poll .toast.alert-warning .toast-header {
+              color: #856404;
+              background-color: #fff58f; }
+            body .pfg main .messages-wrapper .toast-poll .toast.alert-warning .toast-icon {
+              color: darkorange; }
+          body .pfg main .messages-wrapper .toast-poll .toast.alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb; }
+            body .pfg main .messages-wrapper .toast-poll .toast.alert-success .toast-header {
+              color: #155724;
+              background-color: #8aed9b; }
+            body .pfg main .messages-wrapper .toast-poll .toast.alert-success .toast-icon {
+              color: darkgreen; }
+          body .pfg main .messages-wrapper .toast-poll .toast.alert-info {
+            background-color: #d1ecf1;
+            border-color: #bee5eb; }
+            body .pfg main .messages-wrapper .toast-poll .toast.alert-info .toast-header {
+              color: #0c5460;
+              background-color: #99baf1; }
+            body .pfg main .messages-wrapper .toast-poll .toast.alert-info .toast-icon {
+              color: blue; }
+    body .pfg :root {
+      --input-padding-x: 1.5rem;
+      --input-padding-y: 0.75rem; }
+    body .pfg .all-height-screen {
+      min-height: 100vh; }
+    body .pfg .login .bg-image {
+      background-image: url("/static/image/login-unsplash.jpg");
+      background-size: cover;
+      background-position: center; }
+    body .pfg .login .login-heading {
+      font-weight: 300; }
+    body .pfg .login .btn-login {
+      font-size: 0.9rem;
+      letter-spacing: 0.05rem;
+      padding: 0.75rem 1rem;
+      border-radius: 2rem; }
+    body .pfg .login .footer-wrapper {
+      position: absolute;
+      bottom: 0; }
+    body .pfg .login .errornote {
+      color: #ba2121; }
+    body .pfg .form .aligned ul.errorlist {
+      color: #ba2121;
+      margin: 0;
+      padding-left: 25px; }
+      body .pfg .form .aligned ul.errorlist li {
+        list-style: none;
+        display: block; }
+    body .pfg .page-not-found .bg-image {
+      background-image: url("/static/image/404.jpg");
+      background-size: cover;
+      background-position: center; }
+    body .pfg .internal-error .bg-image {
+      background-image: url("/static/image/500.jpg");
+      background-size: cover;
+      background-position: center; }
+    body .pfg .internal-error .ralph::after {
+      content: 'z';
+      font-family: SimpsonFont;
+      font-size: 36px;
+      font-weight: 800; }
+    body .pfg .footer-wrapper {
+      display: table-row;
+      width: 100%;
+      height: auto;
+      background-color: #022f25;
+      color: white; }
+      @media (max-width: 768px), (max-height: 700px) {
+        body .pfg .footer-wrapper .page-footer .container .grid-row {
+          display: flex;
+          flex-wrap: wrap;
+          margin-right: -15px;
+          margin-left: -15px; }
+          body .pfg .footer-wrapper .page-footer .container .grid-row .grid-column {
+            padding: 0.2rem 0 !important; }
+            body .pfg .footer-wrapper .page-footer .container .grid-row .grid-column .logo-row {
+              padding: 0.3rem 0 !important; }
+        body .pfg .footer-wrapper .page-footer .footer-copyright {
+          padding: 0.2rem 0 !important;
+          font-size: 0.7rem; } }
+      body .pfg .footer-wrapper .page-footer .container {
+        max-width: 100%;
+        background-color: #01523f; }
+        body .pfg .footer-wrapper .page-footer .container .grid-row {
+          display: flex;
+          flex-wrap: wrap;
+          margin-right: -15px;
+          margin-left: -15px; }
+          body .pfg .footer-wrapper .page-footer .container .grid-row .grid-column {
+            padding: 0.5rem 0; }
+            body .pfg .footer-wrapper .page-footer .container .grid-row .grid-column .logo-row {
+              padding: 1rem 0; }
+      body .pfg .footer-wrapper .page-footer .footer-copyright {
+        padding: 0.5rem 0; }
+        body .pfg .footer-wrapper .page-footer .footer-copyright a {
+          color: white; }
+          body .pfg .footer-wrapper .page-footer .footer-copyright a:hover {
+            color: white; }
+    body .pfg.rounded-input-theme .btn.btn-primary {
+      border-radius: 2rem; }

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    {% load bootstrap4 %}
+    {% load static %}
+    {% load sass_tags %}
+    <link rel="stylesheet" type="text/css" href="{% static 'scss/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'scss/styles.scss' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'scss/font-awesome-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'scss/font-awesome-animation.min.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.0.slim.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    {# Load CSS and JavaScript #}
+    {# % bootstrap_css % #}
+    {# % bootstrap_javascript % #}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block page_title %}Sh3rl0ck{% endblock %}</title>
+
+    <script type="text/javascript" src="{% static 'js/sherlock.js' %}"></script>
+</head>
+<body>
+{#    <div class="pfg rounded-input-theme">#}
+    <div class="pfg {% block globalClass %}{% endblock %}">
+        {% block base %}{% endblock %}
+    </div>
+</body>
+</html>

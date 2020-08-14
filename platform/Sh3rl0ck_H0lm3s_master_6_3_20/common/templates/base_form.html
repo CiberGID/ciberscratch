@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% block content %}
+    <div class="base-form">
+
+        <form {% if enctype %} enctype="{{ enctype }}" {% endif %} action="{{ form_action_url }}" method="post"
+                               class="form">
+            {% csrf_token %}
+            {{ form | crispy }}
+
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">
+                    {% if button_name %}{{ button_name }}{% else %}{% trans "Siguiente" %}{% endif %}</button>
+            {% endbuttons %}
+        </form>
+    </div>
+{% endblock %}

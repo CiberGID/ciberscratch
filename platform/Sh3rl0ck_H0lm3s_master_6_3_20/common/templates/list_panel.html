@@ -1,0 +1,51 @@
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% load static %}
+<div class="list-view {{ custom_view_name }}">
+
+    <div class="breadcrumb-wrapper shadow-sm bg-white rounded">
+        {% block breadcrumb %}{% endblock %}
+    </div>
+
+    <div class="view-title">
+        <label class="view-title-label">{{ title|upper }}</label>
+    </div>
+
+    {% if not items %}
+        {% block no_items %}
+        <div class="mx-auto text-center">
+            <span class="display-3 non-items">{% block no_items_text %}{% trans "No hay elementos" %}{% endblock %}</span>
+        </div>
+        {% endblock %}
+    {% else %}
+        <form action="/{{ view_url }}/?page={{ items.number }}" method="post" class="form">
+            {% csrf_token %}
+            <div class="card-deck">
+                {% for item in items %}
+                    <div class="card shadow-sm bg-white rounded">
+                        <div class="card-img-wrapper text-center">
+                            <img src="{{ MEDIA_URL }}{% block item_img_url %}{% endblock %}" class="card-img-top rounded img-fluid" alt>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{% block item_name %}{% endblock %}</h5>
+                            <p class="card-text text-justify">{% block item_description %}{% endblock %}</p>
+                            <div class="card-footer-text text-center">
+                                <p class="card-text">
+                                    <small class="text-muted">{% block item_muted %}{% endblock %}</small>
+                                </p>
+                            </div>
+                        </div>
+                        {% block button_wrapper %}
+                            <div class="card-footer bg-transparent text-center">
+                                <button type="submit" class="btn btn-primary item-select-button" name="{{ item.id }}">{% block select_button_name %}{% endblock %}</button>
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endfor %}
+                <input type="hidden" name="item-selected" id="item-selected" value="None">
+            </div>
+        </form>
+        {% include "pagination.html" with items=items %}
+    {% endif %}
+</div>

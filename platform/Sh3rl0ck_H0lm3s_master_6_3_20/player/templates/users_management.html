@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="view-title">
+        <label class="view-title-label text-uppercase">{{ title }}</label>
+    </div>
+    <div class="users-management-view">
+        <div class="base-form course-form">
+            <form enctype="multipart/form-data" method="post" class="form upload-form">{% csrf_token %}
+                <span class="import-instruction">
+                <p class="text-justify">{% trans "Seleccione la asignatura y el año del curso." %}</p>
+            </span>
+                {{ form | crispy }}
+
+                <button type="button" class="btn btn-primary form-button users-upload-course-select-btn"
+                        {% if show_processing %}data-processing="{% trans "Procesando..." %}"{% endif %}>
+                    {% trans "Continuar" %}
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

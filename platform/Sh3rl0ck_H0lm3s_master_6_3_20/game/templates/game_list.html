@@ -1,0 +1,18 @@
+{% extends "list_view.html" %}
+
+{% load i18n %}
+{% block breadcrumb %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">{% trans "Inicio" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'course_list' %}">{{ course.name }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{% trans "Juego" %}</li>
+    </ol>
+</nav>
+{% endblock %}
+{% block no_items_text %}{% trans "No hay juegos" %}{% endblock %}
+{% block item_img_url %}{{ item.game_image }}{% endblock %}
+{% block item_name %}{{ item.name }}{% endblock %}
+{% block item_description %}{{ item.description }}{% endblock %}
+{% block select_button_name %}{% trans "Seleccionar Juego" %}{% endblock %}
+{% block item_muted %}{% trans "Publicado el " %}{{ item.published_date|date:"SHORT_DATE_FORMAT" }}{% endblock %}

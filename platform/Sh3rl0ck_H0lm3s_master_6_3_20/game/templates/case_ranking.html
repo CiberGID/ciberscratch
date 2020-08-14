@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load counter %}
+{% load i18n %}
+{% block content %}
+    <div class="ranking-view detail-view">
+        <div class="view-title">
+            <label class="view-title-label text-uppercase">{{ title }}</label>
+        </div>
+
+        <div class="case-ranking table-panel table-responsive">
+            <form method="get" class="table-selectable-form">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{% trans "Usuario" %}</th>
+                        <th scope="col" class="center-align">{% trans "Misiones resueltas" %}</th>
+                        <th scope="col" class="center-align">{% trans "Claves halladas" %}</th>
+                        <th scope="col" class="center-align">{% trans "Puntuación" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in items %}
+
+                        <tr class="selectable {% if item.id == my_item_id %}red-color{% endif %}"
+                            data-case-id="{{ item.case_id }}" data-group-id="{{ item.group_id }}">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ item.group.name }}</td>
+                            <td class="center-align">{{ item|count_complete_missions }}</td>
+                            <td class="center-align">{{ item.groupresponse_set.count }}</td>
+                            <td class="center-align">{{ item.total_score }}</td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+            {% include "pagination.html" with items=items %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+Django
+psycopg2
+django-bootstrap4
+libsass
+django-compressor
+django-crispy-forms
+django-extensions
+django-sass-processor
+lxml
+pyxb
+Pillow
+six
+future
+mock
+nose
+pep8
+pyflakes
+docker
+paramiko
+scp
+codenamize
+# En un entorno Windows comentar la siguiente dependencia de mysql y seguir las instrucciones de README.md para instalarla
+#mysqlclient

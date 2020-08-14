@@ -1,0 +1,14 @@
+{% extends "list_view.html" %}
+
+{% load i18n %}
+
+{% block no_items_text %}{% trans "No hay pruebas" %}{% endblock %}
+{# % block item_img_url %}{{ item.artifact_type.icon }}{% endblock % #}
+{% block item_name %}{{ item.name }}{% endblock %}
+{% block item_description %}{{ item.description }}{% endblock %}
+{% block item_muted %}Path: {{ item.path }}{% endblock %}
+{% block button_wrapper %}
+    <div class="card-footer bg-transparent text-center">
+        <a href="{% url 'download_clue' item.id %}" target="_blank" class="btn btn-primary">{% trans 'Descargar' %}</a>
+    </div>
+{% endblock %}

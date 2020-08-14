@@ -1,0 +1,100 @@
+{% extends "list_view.html" %}
+
+{% load i18n %}
+
+{% block tabsheet %}
+    {% if show_tabsheet %}
+        <ul class="nav nav-tabs case-status-tabs">
+            <li class="nav-item">
+                <a class="nav-link text-uppercase {% if is_started %}active{% endif %}"
+                   href="{% url 'started_cases' %}">{% trans "Casos en curso" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-uppercase {% if not is_started %}active{% endif %}"
+                   href="{% url 'finished_cases' %}">{% trans "Casos finalizados" %}</a>
+            </li>
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% if show_breadcrumb %}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">{% trans "Inicio" %}</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'course_list' %}">{{ game.course.name }}</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'game_list' %}">{{ game.name }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{% trans "Caso" %}</li>
+            </ol>
+        </nav>
+    {% endif %}
+{% endblock %}
+
+{% block no_items_text %}{% trans "No hay casos" %}{% endblock %}
+{% block item_img_url %}{{ item.case.case_image }}{% endblock %}
+{% if show_parent_name %}
+    {% block parent_item_name %}
+        {{ item.case.game.name }}
+        {% if item.case.game.course.acronym %}
+            ({{ item.case.game.course.acronym }})
+        {% else %}
+            ({{ item.case.game.course.name }})
+        {% endif %}
+    {% endblock %}
+{% endif %}
+{% block item_name %}{{ item.case.name }}{% endblock %}
+{% block item_description %}{{ item.case.description }}{% endblock %}
+
+{% block item_muted %}
+    {% if item.finish_date %}
+        {% trans "Caso finalizado el " %}{{ item.finish_date|date:"SHORT_DATE_FORMAT" }}
+    {% elif item.start_date %}
+        {% trans "Caso iniciado el " %}{{ item.start_date|date:"SHORT_DATE_FORMAT" }}
+    {% endif %}
+{% endblock %}
+
+{% block button_wrapper %}
+    <div class="card-footer bg-transparent text-center">
+        <a href="{% url 'case_ranking' item.case.id %}" class="ranking-link case-ranking-link"></a>
+        <button type="button" class="btn btn-primary show-details-case-btn"
+                {% if item.finish_date %}
+                disabled data-case-finish-date="{{ item.finish_date }}"
+                {% else %}
+                data-target="#caseStoryModalDialog" data-case-start-date="{{ item.start_date }}"
+                data-toggle="modal" data-item-id="{{ item.id }}" data-case-id="{{ item.case.id }}"
+                {% endif %}>
+            {% trans "Mostrar detalles" %}
+        </button>
+    </div>
+{% endblock %}
+
+{% block additional_content %}
+    <!-- Modal -->
+    <div class="modal fade case-story-dialog" id="caseStoryModalDialog" tabindex="-1" role="dialog"
+         aria-labelledby="caseStoryTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="caseStoryTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="message-content"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Cerrar" %}</button>
+                    <button type="submit" class="btn btn-primary item-select-button start-case-btn loading"
+                            id="startCaseBtn"
+                            disabled data-toggle="tooltip"
+                            title="{% trans "Configurando el caso. Por favor, espere." %}"
+                            data-item-id="" data-case-id="">
+                        {% trans "Empezar caso" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

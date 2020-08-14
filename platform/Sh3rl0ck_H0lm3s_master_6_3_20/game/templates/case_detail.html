@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load counter %}
+{% load i18n %}
+{% block content %}
+    <a class="nav-link go-ranking-link" href="{% url 'case_ranking' case.id %}">
+        <span class="go-back-icon" aria-hidden="true"><i
+                class="fas fa-arrow-left faa-passing-reverse animated-hover"></i></span>{% trans "Ver la clasificación del caso" %}
+    </a>
+    <div class="breadcrumb-wrapper shadow-sm bg-white rounded">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">{{ case.name }}</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="case-detail-view detail-view">
+        <div class="event-table table-panel table-responsive">
+            <form method="get" class="table-selectable-form">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">{% trans "Usuario" %}</th>
+                        <th scope="col">{% trans "Misiones resueltas" %}</th>
+                        <th scope="col" class="center-align">{% trans "Claves halladas" %}</th>
+                        <th scope="col" class="center-align">{% trans "Puntuación" %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in items %}
+                        <tr {% if is_my_group or item.event_id in user_gevents %}class="selectable"{% endif %}
+                            {% if not is_my_group and item.event_id not in user_gevents %}data-toggle="tooltip"
+                            data-placement="top" title="{% trans 'Usted no ha completado esta misión' %}"{% endif %}
+                            data-event-id="{{ item.event_id }}" data-group-id="{{ item.group_game_case.group_id }}">
+
+                            <td>{{ item.group_game_case.group.name }}</td>
+                            <td>
+                                {% if is_my_group or item.event_id in user_gevents %}{{ item.event.name }}{% else %}
+                                    ******{% endif %}</td>
+                            <td class="center-align">
+                                {% if is_my_group or item.event_id in user_gevents %}
+                                    {{ item|count_hidden_info_founded }}{% else %}***{% endif %}</td>
+                            <td class="center-align">{{ item|sum_group_event_score }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+            {% include "pagination.html" with items=items %}
+        </div>
+    </div>
+{% endblock %}

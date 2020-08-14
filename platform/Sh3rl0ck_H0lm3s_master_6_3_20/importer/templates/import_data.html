@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="view-title">
+        <label class="view-title-label text-uppercase">{{ title }}</label>
+    </div>
+    <div class="form-import-wrapper base-form">
+        <form enctype="multipart/form-data" action="{% url 'import_datas' %}" method="post" class="form">
+            {% csrf_token %}
+
+            <div class="instruction-wrapper mb-4">
+            <span class="import-instruction"><i
+                    class="fas fa-info-circle text-primary mr-2"></i>{% trans "Adjunte un fichero comprimido ZIP que contenga los recursos necesarios así como un fichero XML que conforme el guion de importación en base a" %} <a
+                    href="{% static 'model.xsd' %}"
+                    target="_blank" class="font-weight-bolder">{% trans "este esquema XSD" %}</a>.</span>
+            </div>
+            {{ form | crispy }}
+
+            <div class="buttons-bar">
+                <button type="submit" class="btn btn-primary form-button">
+                    {% if button_name %}{{ button_name }}{% else %}{% trans "Importar" %}{% endif %}</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

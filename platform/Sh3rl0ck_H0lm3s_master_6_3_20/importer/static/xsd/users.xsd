@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://user.sherlock_holmes.com"
+           xmlns:user="https://user.sherlock_holmes.com"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^@]+@[^\.]+\..+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="users" type="user:Users"/>
+    <xs:complexType name="Users">
+        <xs:sequence>
+            <xs:element name="user" type="user:User" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="User">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Un usuario tiene que tener nombre de usuario y una dirección email. Si el usuario que se desea
+                importar es un profesor hay que indicarlo en el flag is_professor para que se le inserte con el rol
+                de profesor.]]>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="username" type="xs:string" use="required"/>
+        <xs:attribute name="email_address" type="user:email" use="required"/>
+        <xs:attribute name="is_professor" type="xs:boolean" default="false"/>
+    </xs:complexType>
+</xs:schema>

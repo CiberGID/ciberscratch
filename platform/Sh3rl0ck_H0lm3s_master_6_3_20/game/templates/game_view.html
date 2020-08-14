@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block container_classes %}container-fluid{% endblock %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="game-view">
+        <div class="left-sidebar col d-inline">
+            <div class="d-block clue-wrapper col">
+                {% include 'clue_bar.html' %}
+            </div>
+            <div class="d-block key-code-wrapper col align-middle">
+                <div class="view-title">
+                    <label class="view-title-label text-uppercase">Clave</label>
+                </div>
+                <form enctype="multipart/form-data" class="form key-code-form" method="post">
+                    {% csrf_token %}
+
+                    {{ form | crispy }}
+
+                </form>
+                <button type="submit" class="btn btn-success form-button js-validate-key-code text-uppercase">{% trans "VALIDAR"%}
+                </button>
+            </div>
+        </div>
+        <div class="terminal-layout">
+            {% include 'terminal_panel.html' %}
+        </div>
+        <div class="game-message"></div>
+
+        <!-- Modal de comentarios -->
+        <div class="modal fade comment-dialog" id="keyCommentModalDialog" tabindex="-1" role="dialog"
+             aria-labelledby="keyCommentModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-uppercase" id="keyCommentModalTitle">{% trans "¡CLAVE ENCONTRADA!" %}</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form comment-form" method="post">
+                            {% csrf_token %}
+                            <div class="form-group comment-dialog-artifact-name">
+                                <span class="artifact-name-label">{% trans "Prueba:" %} </span>
+                                <span id="comment-dialog-artifact-name"
+                                      class="artifact-name font-italic"><em></em></span>
+                            </div>
+                            <div class="form-group comment-dialog-score">
+                                <span class="score-label">{% trans "Puntuación:" %} </span>
+                                <span id="comment-dialog-score" class="score"></span>
+                            </div>
+                            {{ comment_form | crispy }}
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-lg btn-block next-event-btn">{% trans "Continuar" %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal de historia -->
+        <div class="modal fade story-dialog" id="storyModalDialog" tabindex="-1" role="dialog"
+             aria-labelledby="storyTitle"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-uppercase" id="storyTitle">{{ ggc.case.name }}</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="message-content"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block next-story-btn">
+                            {% trans "Continuar" %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#  chatpanel  #}
+        <div class="chat-panel collapse" id="collapseGameChat">
+            {% include 'chat_panel.html' %}
+        </div>
+    </div>
+{% endblock %}

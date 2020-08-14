@@ -1,0 +1,11 @@
+<div class="select-field" {% include "django/forms/widgets/attrs.html" %} >
+    {% for group_name, group_choices, group_index in widget.optgroups %}
+        {% for option in group_choices %}
+            <input type="radio" name="{{ widget.name }}" class="form-control radioItem radioitem"
+                   value="{{ option.value|stringformat:'s' }}"
+                   id="{{ option.value|stringformat:'s' }}"
+                   placeholder="{{ option.label }}">
+            <label class="input-label" for="{{ option.value|stringformat:'s' }}">{{ option.label }}</label>
+        {% endfor %}
+    {% endfor %}
+</div>

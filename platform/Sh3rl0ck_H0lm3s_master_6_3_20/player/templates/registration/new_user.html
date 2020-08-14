@@ -1,0 +1,17 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans %}Hola {{ user.get_username }}.{% endblocktrans %}
+{% blocktrans %}Bienvenido a {{ site_name }}.{% endblocktrans %}
+
+{% trans "Tu cuenta de usuario ha sido creada correctamente en " %}<a href="{{ protocol }}://{{ domain }}{% url 'home' %}" target="_blank">{{ site_name }}</a>.
+
+{% trans "Esperamos que disfrute de los juegos que tiene disponibles." %}
+
+{% trans "Sus credenciales de acceso son las siguientes:" %}
+
+{% trans "Nombre de usuario: " %}{{ user.get_username }}
+{% trans "Contraseña: " %}{{ password }}
+
+{% trans "Por favor, modifique de inmediato la contraseña pulsando " %}<a href="{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}" target="_blank">{% trans "aquí" %}</a>.
+
+{% blocktrans %}El equipo {{ site_name }}{% endblocktrans %}
+{% endautoescape %}

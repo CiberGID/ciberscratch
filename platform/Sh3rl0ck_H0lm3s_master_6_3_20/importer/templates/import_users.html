@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="users-import-view">
+        <div class="view-title">
+            <label class="view-title-label text-uppercase">{{ title }}</label>
+        </div>
+        <div class="form-import-wrapper base-form users-xml-upload-form">
+            <form enctype="multipart/form-data" method="post" class="form upload-form users-upload-form">
+                {% csrf_token %}
+
+                <div class="instruction-wrapper mb-4">
+            <span class="import-instruction"><i
+                    class="fas fa-info-circle text-primary mr-2"></i>{% trans "Adjunte un fichero XML que contenga los usuarios a dar de alta en base a" %} <a
+                    href="{% static 'users.xsd' %}"
+                    target="_blank" class="font-weight-bolder">{% trans "este esquema XSD" %}</a>.</span>
+                </div>
+                {{ form_upload | crispy }}
+
+                <button type="submit" class="btn btn-primary form-button users-upload-btn">
+                    {% trans "Subir" %}
+                </button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
