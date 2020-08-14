@@ -203,7 +203,7 @@
         </xs:annotation>
         <xs:sequence>
             <xs:element name="toolParamValue" type="game:ToolParamValue" minOccurs="0" maxOccurs="unbounded"/>
-	    <xs:element name="clue" type="game:Clue" minOccurs="0" maxOccurs="unbounded"/>
+	        <xs:element name="game_clue" type="game:Clue" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="name" type="xs:string" use="required"/>
         <xs:attribute name="description" type="xs:string"/>
@@ -224,7 +224,9 @@
                 <![CDATA[Una pista para ayudar al estudiente en el juego.]]>
             </xs:documentation>
         </xs:annotation>
-        <xs:element name="clue_text" type="xs:string" use="required"/>
+		<xs:sequence>
+			<xs:element name="clue_text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
         <xs:attribute name="order" type="xs:long" use="required"/>
 	<xs:attribute name="cost" type="xs:long"/>
     </xs:complexType>
