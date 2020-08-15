@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="https://game.sherlock_holmes.com"
-           xmlns:game="https://game.sherlock_holmes.com"
+           targetNamespace="https://ciberscratch.uned.com"
+           xmlns:game="https://ciberscratch.uned.com"
+		   xmlns:dc="http://purl.org/dc/elements/1.1/"
            elementFormDefault="qualified">
+<xs:import namespace="http://purl.org/dc/elements/1.1/"  schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd"/>
 
     <xs:element name="game" type="game:Game"/>
     <xs:complexType name="Game">
@@ -11,13 +13,18 @@
                 <![CDATA[La raíz de la definición del juego es el elemento Game. El documento XML y sus recursos deben estar contenidos con cierto orden en el paquete del juego.]]>
             </xs:documentation>
         </xs:annotation>
-        <xs:sequence maxOccurs="unbounded">
-            <xs:element name="case" type="game:Case"/>
+        <xs:sequence>
+            <xs:element name="case" type="game:Case" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element ref="dc:title" />
+			<xs:element ref="dc:creator" />
+			<xs:element ref="dc:subject" />
+			<xs:element ref="dc:language" />
+			<xs:element ref="dc:date" />
+			<xs:element ref="dc:rights" />
+			<xs:element ref="dc:description" />
         </xs:sequence>
-        <xs:attribute name="name" type="xs:string" use="required"/>
-        <xs:attribute name="description" type="xs:string"/>
-        <xs:attribute name="published_date" type="xs:dateTime"/>
-        <xs:attribute name="is_published" type="xs:boolean" use="required"/>
+        <xs:attribute name="code" type="xs:string" use="required"/>
+		<xs:attribute name="version" type="xs:string" />
         <xs:attribute name="game_image" type="xs:anyURI"/>
     </xs:complexType>
 

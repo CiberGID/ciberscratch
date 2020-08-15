@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/CiberGID/ciberscratch/tree/master/game%20definition/game_definition.json",
+  "title": "Game",
+  "description": "Description for a game package that runs at Ciberscratch platform",
+  "type": "object",
+  "properties": {
+	"code":{
+		"description": "Game code, for identification purposes",
+		"type": "string"
+	},
+	"version":{
+		"description": "Game version",
+		"type": "string",
+	},
+	"game_image":{
+		"description":" Relative path towards the image of the game from the root of the game package directory."
+		"type":"string"
+	},
+	
+  },
+   "required": [ "code"]
+}
