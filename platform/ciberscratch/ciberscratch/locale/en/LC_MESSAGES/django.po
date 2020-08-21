@@ -1,0 +1,246 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-21 09:44+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\ciberscratch\templates\base_form.html:16
+#: .\ciberscratch\templates\pagination.html:22
+msgid "Siguiente"
+msgstr ""
+
+#: .\ciberscratch\templates\footer.html:10
+msgid "Dpto. Sistemas de Comunicación y Control"
+msgstr ""
+
+#: .\ciberscratch\templates\footer_logos.html:39
+msgid "CiberGID"
+msgstr ""
+
+#: .\ciberscratch\templates\list_panel.html:18
+#: .\ciberscratch\templates\list_view.html:23
+msgid "No hay elementos"
+msgstr ""
+
+#: .\ciberscratch\templates\messages.html:26
+msgid "Error"
+msgstr ""
+
+#: .\ciberscratch\templates\messages.html:28
+msgid "Aviso"
+msgstr ""
+
+#: .\ciberscratch\templates\messages.html:30
+msgid "Confirmación"
+msgstr ""
+
+#: .\ciberscratch\templates\messages.html:32
+msgid "Información"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:11
+msgid "Inicio"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:20
+msgid "Jugar"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:26
+msgid "Gestión"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:29
+msgid "Importar datos de Juego"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:30
+msgid "Importar usuarios"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:32
+msgid "Grupos de usuarios"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:34
+msgid "Administrar BBDD"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:41
+msgid "Cerrar sesión"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:44
+msgid "Iniciar sesión"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:60
+msgid "mensajes sin leer"
+msgstr ""
+
+#: .\ciberscratch\templates\navbar.html:64
+msgid "Salir del juego"
+msgstr ""
+
+#: .\ciberscratch\templates\pagination.html:6
+msgid "Anterior"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\login.html:16
+msgid "username"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\login.html:17
+msgid "password"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\login.html:31
+#: .\ciberscratch\templates\registration\login.html:80
+#: .\ciberscratch\templates\registration\password_reset_complete.html:14
+#: .\ciberscratch\templates\registration\password_reset_done.html:15
+msgid "Log in"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\login.html:34
+#: .\ciberscratch\templates\registration\password_change_form.html:30
+msgid "Please correct the error below."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\login.html:35
+#: .\ciberscratch\templates\registration\password_change_form.html:31
+msgid "Please correct the errors below."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\login.html:50
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\login.html:86
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\login.html:90
+msgid "New user? Join us!"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_change_done.html:8
+msgid "Your password was changed."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_change_form.html:7
+msgid "Old password"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_change_form.html:8
+msgid "New password"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_change_form.html:9
+msgid "New password confirmation"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_change_form.html:34
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_change_form.html:70
+#: .\ciberscratch\templates\registration\password_reset_confirm.html:46
+msgid "Change my password"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_complete.html:12
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_confirm.html:9
+msgid "New password:"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_confirm.html:10
+msgid "Confirm password:"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_confirm.html:25
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_confirm.html:54
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_done.html:11
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_form.html:7
+msgid "Email address:"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_form.html:19
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_form.html:33
+msgid "Reset my password"
+msgstr ""
+
+#: .\ciberscratch\templates\registration\password_reset_subject.txt:2
+#, python-format
+msgid "Password reset on %(site_name)s"
+msgstr ""

@@ -1,0 +1,21 @@
+{% extends "skeleton.html" %}
+
+{% load static %}
+
+{% block base %}
+
+    <div class="navbar-wrapper">
+        {% include "navbar.html" %}
+    </div>
+    <main>
+        <div class="{% block container_classes %}container{% endblock %}">
+            <div class="messages-wrapper" aria-live="polite">
+                {% include "messages.html" %}
+            </div>
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    <div class="footer-wrapper">
+        {% include "footer_logos.html" %}
+    </div>
+{% endblock %}

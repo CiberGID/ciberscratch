@@ -1,23 +1,585 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/CiberGID/ciberscratch/tree/master/game%20definition/game_definition.json",
-  "title": "Game",
-  "description": "Description for a game package that runs at Ciberscratch platform",
-  "type": "object",
-  "properties": {
-	"code":{
-		"description": "Game code, for identification purposes",
-		"type": "string"
-	},
-	"version":{
-		"description": "Game version",
-		"type": "string",
-	},
-	"game_image":{
-		"description":" Relative path towards the image of the game from the root of the game package directory."
-		"type":"string"
-	},
-	
-  },
-   "required": [ "code"]
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://purl.org/dc/elements/1.1/#",
+    "definitions": {
+        "SimpleLiteral": {
+            "type": "object",
+            "properties": {
+                "Content": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "lang": {"type": "string"}
+            }
+        },
+        "ArtifactType": {
+            "type": "object",
+            "required": [
+                "title",
+                "description",
+                "id",
+                "extension"
+            ],
+            "properties": {
+                "title": {"$ref": "#/definitions/SimpleLiteral"},
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "id": {"type": "integer"},
+                "extension": {"type": "string"}
+            }
+        },
+        "ToolParamValue": {
+            "type": "object",
+            "required": [
+                "param_id",
+                "tool_id"
+            ],
+            "properties": {
+                "param_id": {"type": "integer"},
+                "tool_id": {"type": "integer"},
+                "value": {
+                    "type": "string",
+                    "default": ""
+                },
+                "add_flag_value": {
+                    "type": "boolean",
+                    "default": "false"
+                }
+            }
+        },
+        "Clue": {
+            "type": "object",
+            "required": [
+                "clue_text",
+                "order"
+            ],
+            "properties": {
+                "clue_text": {"type": "string"},
+                "order": {"type": "integer"}
+            }
+        },
+        "FlagType": {
+            "type": "object",
+            "required": [
+                "type",
+                "description",
+                "id"
+            ],
+            "properties": {
+                "type": {
+                    "allOf": [
+                        {"type": "string"},
+                        {
+                            "enum": [
+                                "Fixed",
+                                "RandomRegex",
+                                "RandomList"
+                            ]
+                        }
+                    ]
+                },
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "id": {"type": "integer"}
+            }
+        },
+        "Flag": {
+            "type": "object",
+            "required": [
+                "title",
+                "description",
+                "flag_id"
+            ],
+            "properties": {
+                "toolParamValue": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ToolParamValue"},
+                    "minItems": 0
+                },
+                "game_clue": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Clue"},
+                    "minItems": 0
+                },
+                "flag_type": {"$ref": "#/definitions/FlagType"},
+                "regex": {"type": "string"},
+                "word_list": {"type": "string"},
+                "title": {"$ref": "#/definitions/SimpleLiteral"},
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "flag_id": {"type": "string"},
+                "mission_key": {"type": "string"},
+                "random_word_maxlength": {"type": "integer"}
+            }
+        },
+        "Artifact": {
+            "type": "object",
+            "required": [
+                "artifact_type",
+                "title",
+                "description"
+            ],
+            "properties": {
+                "artifact_type": {"$ref": "#/definitions/ArtifactType"},
+                "flag": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Flag"},
+                    "minItems": 0
+                },
+                "title": {"$ref": "#/definitions/SimpleLiteral"},
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "path": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "artifact_id": {"type": "string"}
+            }
+        },
+        "MessageType": {
+            "type": "object",
+            "required": [
+                "type",
+                "description",
+                "id"
+            ],
+            "properties": {
+                "type": {
+                    "allOf": [
+                        {"type": "string"},
+                        {
+                            "enum": [
+                                "on_screen",
+                                "pdf",
+                                "chat",
+                                "html",
+                                "audio",
+                                "URL",
+                                "video"
+                            ]
+                        }
+                    ]
+                },
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "id": {"type": "integer"}
+            }
+        },
+        "Message": {
+            "type": "object",
+            "required": [
+                "message_type",
+                "language"
+            ],
+            "properties": {
+                "plane_text": {"type": "string"},
+                "file_path": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "message_type": {"$ref": "#/definitions/MessageType"},
+                "language": {"$ref": "#/definitions/SimpleLiteral"},
+                "order": {
+                    "type": "integer",
+                    "default": "1"
+                },
+                "delay_to_show": {
+                    "type": "integer",
+                    "default": "0"
+                },
+                "character_id": {"type": "string"}
+            }
+        },
+        "Story": {
+            "type": "object",
+            "required": [
+                "message",
+                "title",
+                "description",
+                "story_id"
+            ],
+            "properties": {
+                "message": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Message"},
+                    "minItems": 1
+                },
+                "title": {"$ref": "#/definitions/SimpleLiteral"},
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "story_id": {"type": "integer"}
+            }
+        },
+        "Mission": {
+            "type": "object",
+            "required": [
+                "artifact",
+                "artifact_id",
+                "title",
+                "description"
+            ],
+            "properties": {
+                "mission_intro_story": {"$ref": "#/definitions/Story"},
+                "mission_end_story": {"$ref": "#/definitions/Story"},
+                "artifact": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Artifact"},
+                    "minItems": 1
+                },
+                "artifact_id": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "artifact_id": {"type": "string"}
+                        }
+                    },
+                    "minItems": 1
+                },
+                "flag": {"$ref": "#/definitions/Flag"},
+                "title": {"$ref": "#/definitions/SimpleLiteral"},
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "mission_id": {"type": "string"},
+                "previous_mission": {"type": "string"},
+                "delay_start": {"type": "integer"},
+                "onfinish_cancel_active_missions": {
+                    "type": "boolean",
+                    "default": "false"
+                }
+            }
+        },
+        "ContextType": {
+            "type": "object",
+            "required": [
+                "type",
+                "description",
+                "id"
+            ],
+            "properties": {
+                "type": {
+                    "allOf": [
+                        {"type": "string"},
+                        {
+                            "enum": [
+                                "DockerSimple",
+                                "DockerCompose",
+                                "DockerHub"
+                            ]
+                        }
+                    ]
+                },
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "id": {"type": "integer"}
+            }
+        },
+        "Context": {
+            "type": "object",
+            "required": [
+                "type_context",
+                "path"
+            ],
+            "properties": {
+                "type_context": {"$ref": "#/definitions/ContextType"},
+                "path": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "access_node": {"type": "string"},
+                "protocol": {
+                    "type": "string",
+                    "default": "ssh"
+                },
+                "terminal_username": {"type": "string"}
+            }
+        },
+        "Case": {
+            "type": "object",
+            "required": [
+                "story",
+                "mission",
+                "context",
+                "title",
+                "creator",
+                "date",
+                "description"
+            ],
+            "properties": {
+                "story": {"$ref": "#/definitions/Story"},
+                "mission": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Mission"},
+                    "minItems": 1
+                },
+                "context": {"$ref": "#/definitions/Context"},
+                "title": {"$ref": "#/definitions/SimpleLiteral"},
+                "creator": {"$ref": "#/definitions/SimpleLiteral"},
+                "date": {"$ref": "#/definitions/SimpleLiteral"},
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "code": {"type": "string"},
+                "case_image": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "Character": {
+            "type": "object",
+            "required": [
+                "character_id",
+                "name",
+                "full_name"
+            ],
+            "properties": {
+                "character_id": {"type": "string"},
+                "name": {"type": "string"},
+                "full_name": {"type": "string"},
+                "avatar_image": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "Game": {
+            "type": "object",
+            "required": [
+                "_case",
+                "title",
+                "creator",
+                "subject",
+                "language",
+                "date",
+                "rights",
+                "description",
+                "code"
+            ],
+            "properties": {
+                "_case": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Case"},
+                    "minItems": 1
+                },
+                "character": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Character"},
+                    "minItems": 0
+                },
+                "title": {"$ref": "#/definitions/SimpleLiteral"},
+                "creator": {"$ref": "#/definitions/SimpleLiteral"},
+                "subject": {"$ref": "#/definitions/SimpleLiteral"},
+                "language": {"$ref": "#/definitions/SimpleLiteral"},
+                "date": {"$ref": "#/definitions/SimpleLiteral"},
+                "rights": {"$ref": "#/definitions/SimpleLiteral"},
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "code": {"type": "string"},
+                "version": {"type": "string"},
+                "game_image": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "HidingType": {
+            "type": "object",
+            "required": [
+                "title",
+                "description"
+            ],
+            "properties": {
+                "title": {"$ref": "#/definitions/SimpleLiteral"},
+                "description": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        "ToolParameter": {
+            "type": "object",
+            "required": [
+                "title",
+                "description",
+                "parameter",
+                "order"
+            ],
+            "properties": {
+                "title": {"$ref": "#/definitions/SimpleLiteral"},
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "parameter": {"type": "string"},
+                "order": {"type": "integer"}
+            }
+        },
+        "Tool": {
+            "type": "object",
+            "required": [
+                "title",
+                "description",
+                "command"
+            ],
+            "properties": {
+                "hiding_type": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/HidingType"},
+                    "minItems": 0
+                },
+                "parameter": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/ToolParameter"},
+                    "minItems": 0
+                },
+                "title": {"$ref": "#/definitions/SimpleLiteral"},
+                "description": {"$ref": "#/definitions/SimpleLiteral"},
+                "command": {"type": "string"}
+            }
+        },
+        "Tools": {
+            "type": "object",
+            "required": ["tool"],
+            "properties": {
+                "tool": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Tool"},
+                    "minItems": 1
+                }
+            }
+        },
+        "elementContainer": {
+            "type": "object",
+            "properties": {
+                "any": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "any": {"$ref": "#/definitions/SimpleLiteral"}
+                        }
+                    },
+                    "minItems": 0
+                }
+            }
+        }
+    },
+    "anyOf": [
+        {
+            "type": "object",
+            "properties": {
+                "date": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "coverage": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "identifier": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "creator": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "subject": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "format": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "description": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "language": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "source": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "title": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "type": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "relation": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "contributor": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "rights": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "publisher": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "artifact": {"$ref": "#/definitions/Artifact"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "game": {"$ref": "#/definitions/Game"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "mission": {"$ref": "#/definitions/Mission"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "artifact_type": {"$ref": "#/definitions/ArtifactType"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "tools": {"$ref": "#/definitions/Tools"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "any": {"$ref": "#/definitions/SimpleLiteral"}
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "artifact_id": {"type": "string"}
+            }
+        }
+    ]
 }

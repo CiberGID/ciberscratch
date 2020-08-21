@@ -1,0 +1,44 @@
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+<!-- Footer -->
+<footer class="page-footer font-small">
+
+    <!-- Footer Elements -->
+    <div class="container">
+
+      <!-- Grid row-->
+      <div class="row grid-row">
+
+        <!-- Grid column -->
+        <div class="col-md-12 text-center grid-column">
+          <div class="flex-center logo-row">
+
+            <!-- Uned -->
+            <a class="uned-ic"href="https://www.uned.es" target="_blank">
+              <img class="white-text mr-md-5 mr-5 fa-2x" src="{% static 'image/logo_uned_white_24px.png' %}">
+            </a>
+
+            <!-- SCC -->
+            <a class="scc-ic" href="https://blogs.uned.es/cibergid/" target="_blank">
+              <img class="white-text mr-md-5 fa-2x" src="{% static 'image/logo4.png' %}" width="32px">
+            </a>
+
+          </div>
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
+
+    </div>
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center">© 2020
+      <a href="https://blogs.uned.es/cibergid/" target="_blank">{% trans "CiberGID" %}</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->

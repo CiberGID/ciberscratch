@@ -1,0 +1,44 @@
+{% load i18n %}
+<div class="toast-poll" style="position: absolute; top: 0; right: 0;">
+
+    {% for message in messages %}
+        <div class="toast fade {{ message.tags }}" {% if message.tags == 'alert-danger' %}role="alert"
+             aria-live="assertive" data-autohide="false"{% else %}role="status"
+             aria-live="polite"
+             data-delay="{% if message.tags == 'alert-warning' %}10000{% elif message.tags == 'alert-success' %}4000{% else %}6000{% endif %}" {% endif %}
+             aria-atomic="true">
+            <div class="toast-header">
+            <span class="toast-icon rounded mr-2">
+                <i class="
+                {% if message.tags == 'alert-danger' %}
+                    fas fa-times-circle
+                {% elif  message.tags == 'alert-warning' %}
+                    fas fa-exclamation-circle
+                {% elif  message.tags == 'alert-success' %}
+                    fas fa-check-circle
+                {% elif  message.tags == 'alert-info' %}
+                    fas fa-info-circle
+                {% endif %}
+                "></i>
+            </span>
+                <strong class="mr-auto">
+                    {% if message.tags == 'alert-danger' %}
+                        {% trans "Error" %}
+                    {% elif  message.tags == 'alert-warning' %}
+                        {% trans "Aviso" %}
+                    {% elif  message.tags == 'alert-success' %}
+                        {% trans "Confirmación" %}
+                    {% elif  message.tags == 'alert-info' %}
+                        {% trans "Información" %}
+                    {% endif %}
+                </strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+</div>

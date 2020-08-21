@@ -1,0 +1,26 @@
+{% extends "skeleton.html" %}
+
+{% block page_title %} Ciberscratch {% endblock %}
+{% block globalClass %}rounded-input-theme{% endblock %}
+{% block base %}
+    <main>
+        <div class="auth-base all-height-screen {% block auth_base_class %}{% endblock %}">
+            <div class="container-fluid">
+                <div class="row no-gutter">
+                    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+                    <div class="col-md-8 col-lg-6 px-0 position-relative">
+                        <div class="wrapper d-flex all-height-screen align-items-center py-3">
+                            <div class="container">
+                                {% block content %}{% endblock %}
+                            </div>
+                        </div>
+                        <div class="footer-wrapper">
+                            {% include "footer_logos.html" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
