@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'GameEditor',
+    'GameMonitor',
+    'GameEngine',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +134,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "ciberscratch/static/"),
 ]
+
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+
+GAME_REPOSITORY = os.path.join(BASE_DIR, 'GameRepository')

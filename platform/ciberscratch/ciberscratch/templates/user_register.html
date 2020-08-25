@@ -1,0 +1,89 @@
+{% extends "base_auth.html" %}
+{% load i18n %}
+
+{% block auth_base_class %}login{% endblock %}
+
+{% block content %}
+    {% trans 'Email address:' as email_placeholder %}
+    {% trans 'Username:' as username_placeholder %}
+    {% trans 'Classroom Key:' as classroom_key_placeholder %}
+    {% trans "New password" as pass1 %}
+    {% trans "New password confirmation" as pass2 %}
+
+    <script>
+        $(document).ready(function () {
+            $('#id_email').addClass('form-control')
+            $('#id_email').attr('placeholder', '{{ email_placeholder }}')
+            $('#id_username').addClass('form-control')
+            $('#id_username').attr('placeholder', '{{ username_placeholder }}')
+            $('#id_classroom_key').addClass('form-control')
+            $('#id_classroom_key').attr('placeholder', '{{ classroom_key_placeholder }}')
+            $('#id_password1').addClass('form-control')
+            $('#id_password1').attr('placeholder', '{{ pass1 }}')
+            $('#id_password2').addClass('form-control')
+            $('#id_password2').attr('placeholder', '{{ pass2 }}')
+        })
+    </script>
+
+    <div class="row">
+        <div class="col-md-9 col-lg-11 mx-auto">
+            <h3 class="login-heading mb-4 text-center">{{ title }}</h3>
+
+            <p class="text-justify">{% trans "Registrarme " %}</p>
+            <form method="post" class="form">
+                {% csrf_token %}
+
+                <div class="form-row d-block">
+                    {{ form.email.errors }}
+                    <div class="form-label-group">
+                        {{ form.email }}
+                        <label for="id_email">{{ email_placeholder }}</label>
+                    </div>
+                </div>
+
+                <div class="form-row d-block">
+                    {{ form.username.errors }}
+                    <div class="form-label-group">
+                        {{ form.username }}
+                        <label for="id_username">{{ username_placeholder }}</label>
+                    </div>
+                </div>
+
+                <div class="form-row d-block">
+                    {{ form.classroom_key.errors }}
+                    <div class="form-label-group">
+                        {{ form.classroom_key }}
+                        <label for="id_classroom_key">{{ classroom_key_placeholder }}</label>
+                    </div>
+                </div>
+
+                <div class="form-row d-block">
+                        {{ form.password1.errors }}
+                        <div class="form-label-group">
+                            {{ form.password1 }}
+                            <label for="id_password1">{{ pass1 }}</label>
+                        </div>
+                        {% if form.password1.help_text %}
+                            <div class="help">{{ form.password1.help_text|safe }}</div>
+                        {% endif %}
+                    </div>
+                <div class="form-row d-block">
+                        {{ form.password2.errors }}
+                        <div class="form-label-group">
+                            {{ form.password2 }}
+                            <label for="id_password2">{{ pass2 }}</label>
+                        </div>
+                        {% if form.password2.help_text %}
+                            <div class="help">{{ form.password2.help_text|safe }}</div>
+                        {% endif %}
+                    </div>
+
+
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                        type="submit">
+                    {% trans 'Registrarme' %}
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

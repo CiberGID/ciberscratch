@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="header">
+        <h3><acronym title="Tooltip acronym">{{title}}</acronym></h3>
+    </div>
+    {% if request.user.is_staff %}
+       {% include "classroom_list.html" %}
+    {% endif %}
+    {% if not request.user.is_staff %}
+        <p> ¡Bienvienido jugador!</p>
+    {% endif %}
+{% endblock %}

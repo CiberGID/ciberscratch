@@ -1,0 +1,40 @@
+{% load static %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+<a class="btn btn-primary" role='button' href="{% url 'gamemonitor:edit_classroom' 0 %}"> {% trans "Crear nueva clase" %}</a>
+{% if classrooms|length < 1 %}
+            <h4> {% trans "Sin clases" %} </h4>
+{% else %}
+            <h4>{% trans "Tus clases" %} </h4>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">{% trans 'Acrónimo' %}</th>
+                      <th scope="col">{% trans 'Nombre' %}</th>
+                      <th scope="col">{% trans 'Fecha Inicial' %}</th>
+                      <th scope="col">{% trans 'Fecha Final' %}</th>
+                      <th scope="col">{% trans 'Alumnos' %}</th>
+                      <th scope="col"> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for c in classrooms %}
+                        <tr>
+                            <td>{{ c.acronym }}</td>
+                            <td>{{ c.name }}</td>
+                            <td>{{ c.start_date }}</td>
+                            <td>{{ c.finish_date }}</td>
+                            <td>{{ c.student_body|length }}</td>
+                            <td> <a href="{% url 'gamemonitor:edit_classroom' c.id %}"><i class="fas fa-user-edit"></i></a>
+                                 <a href="{% url 'gamemonitor:delete_classroom' c.id %}"><i class="fas fa-trash-alt"></i></a>
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+
+            </div>
+{% endif %}

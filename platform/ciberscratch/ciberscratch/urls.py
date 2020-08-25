@@ -21,7 +21,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
-    path('gameegine/',include('GameEngine.urls')),
-    path('gamemonitor/',include('GameMonitor.urls')),
-    path('gameeditor/',include('GameEditor.urls')),
+    path('gameegine/',include('GameEngine.urls',namespace='gameengine')),
+    path('gamemonitor/',include('GameMonitor.urls',namespace='gamemonitor')),
+    path('gameeditor/',include('GameEditor.urls',namespace='gameeditor')),
 ]

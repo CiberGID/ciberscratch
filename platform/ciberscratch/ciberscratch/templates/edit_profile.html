@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% load i18n static %}
+{% block globalClass %} rounded-input-theme{% endblock %}
+{% block page_title %}{{ title }}{% endblock %}
+{% block content %}
+
+    <script>
+        $(document).ready(function () {
+            $('#id_username').addClass('form-control')
+            $('#id_username').attr('placeholder', '{% trans "Usuario" %}')
+            $('#id_first_name').addClass('form-control')
+            $('#id_first_name').attr('placeholder', '{% trans "Nombre" %}')
+            $('#id_last_name').addClass('form-control')
+            $('#id_last_name').attr('placeholder', '{% trans "Apellidos" %}')
+            $('#id_email').addClass('form-control')
+            $('#id_email').attr('placeholder', '{% trans "Email" %}')
+        })
+    </script>
+
+<h1>{% trans "Actualiza tu pérfil" %}</h1>
+    <p> Desde este apartado no es posible actualizar tu contraseña. Si deseas cambiarla podrás hacerlo desde <a  href="{% url 'password_change' %}">Cambio de contraseña</a></p>
+<div id="content-main">
+    <form method="post" class="form">{% csrf_token %}
+            <div>
+                {% if form.errors %}
+                    <p class="errornote">
+                        {% if form.errors.items|length == 1 %}
+                            {% trans "Please correct the error below." %}{% else %}
+                            {% trans "Please correct the errors below." %}{% endif %}
+                    </p>
+                {% endif %}
+
+                <fieldset class="module aligned wide">
+                    <div class="form-row d-block">
+                        {{ form.username.errors }}
+                        <div class="form-label-group">
+                            {{ form.username }}
+                            <label for="id_username">{% trans 'Usuario' %}</label>
+                            {% if form.username.help_text %}
+                            <div class="help">{{ form.username.help_text|safe }}</div>
+                             {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-row d-block">
+                        {{ form.first_name.errors }}
+                        <div class="form-label-group">
+                            {{ form.first_name }}
+                            <label for="id_first_name">{% trans 'Nombre' %}</label>
+                            {% if form.first_name.help_text %}
+                            <div class="help">{{ form.first_name.help_text|safe }}</div>
+                             {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-row d-block">
+                        {{ form.last_name.errors }}
+                        <div class="form-label-group">
+                            {{ form.last_name }}
+                            <label for="id_last_name">{% trans 'Apellidos' %}</label>
+                            {% if form.last_name.help_text %}
+                            <div class="help">{{ form.last_name.help_text|safe }}</div>
+                             {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-row d-block">
+                        {{ form.email.errors }}
+                        <div class="form-label-group">
+                            {{ form.email }}
+                            <label for="id_email">{% trans 'Email' %}</label>
+                            {% if form.email.help_text %}
+                            <div class="help">{{ form.email.help_text|safe }}</div>
+                             {% endif %}
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="submit-row">
+                    <input type="submit" value="{% trans 'Actualizar mi pérfil' %}"
+                           class="btn btn-lg btn-primary btn-block text-uppercase font-weight-bold mt-2">
+                </div>
+                </div>
+    </form>
+
+</div>
+{% endblock %}

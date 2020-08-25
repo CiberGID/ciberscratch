@@ -87,7 +87,7 @@
                         </div>
                     {% endif %}
                         <div class="password-reset-link small text-center">
-                            <a href="{{ new_user_url }}">{% trans 'New user? Join us!' %}</a>
+                            <a href="{% url 'gamemonitor:register_user' %}">{% trans 'New user? Join us!' %}</a>
                         </div>
                 </form>
             </div>

@@ -1,0 +1,16 @@
+{% extends "base_auth.html" %}
+{% load i18n %}
+
+{% block auth_base_class %}login{% endblock %}
+
+{% block content %}
+       <div class="row">
+        <div class="col-md-9 col-lg-11 mx-auto">
+            <h3 class="login-heading mb-4 text-center">{{ title }}</h3>
+
+            <p class="text-justify">{% trans "Su usuario ha sido registrado. Ya puede iniciar sesión. No olvide actualizar los datos de su pérfil." %}</p>
+
+            <p class="text-center"><a class="small" href="{% url 'login' %}">{% trans 'Log in' %}</a></p>
+        </div>
+    </div>
+{% endblock %}

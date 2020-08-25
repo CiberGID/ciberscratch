@@ -1,51 +1,62 @@
 {% load static %}
 
-{% load permission_tag %}
-
 {% load i18n %}
 
 {% load bootstrap4 %}
-<nav class="navbar navbar-expand-lg navbar navbar-dark top-navbar">
-    <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="{% static 'image/Sherlock-Holmes-Icon-256.png' %}" width="30" height="30" alt="" class="align-bottom">
+<nav class="navbar navbar-expand-lg navbar-light navbar-dark">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'image/logo.png' %}" width="30" height="30" alt="" class="align-bottom">
         {% trans "Inicio" %}
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item ml-xl-2">
-                <a class="nav-link" href="{% url 'course_list' %}">{% trans "Jugar" %}</a>
-            </li>
-            {% if request.user.is_superuser or user|check_permission:'game.add_game' %}
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+            {% if request.user.is_staff %}
                 <li class="nav-item dropdown ml-xl-4">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownImportMenuLink" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {% trans "Gestión" %}
+                        <i class="fas fa-tools"></i> {% trans "Herramientas" %}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownImportMenuLink">
-                        <a class="dropdown-item" href="{% url 'import_datas' %}">{% trans "Importar datos de Juego" %}</a>
-                        <a class="dropdown-item" href="{% url 'import_users' %}">{% trans "Importar usuarios" %}</a>
+                        <a class="dropdown-item" href="#">{% trans "Editor del Juego" %}</a>
+                        <a class="dropdown-item" href="#">{% trans "Importar juego" %}</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'user_group_management' %}">{% trans "Grupos de usuarios" %}</a>
+                        <a class="dropdown-item" href="#">{% trans "Gestor de Clases" %}</a>
+
+                        {% if request.user.is_superuser %}
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'admin:index' %}">{% trans "Administrar BBDD" %}</a>
+                        <a class="dropdown-item" href="{% url 'admin:index' %}">{% trans "Sitio de Administración" %}</a>
+                        {% endif %}
                     </div>
                 </li>
             {% endif %}
-            <div class="user-nav nav">
-                {% if user.is_authenticated %}
-                    <a class="nav-link logout-link" href="{% url 'logout' %}" tabindex="-1">
-                        {% trans "Cerrar sesión" %} ({{ user.username }})
+         {% if user.is_authenticated %}
+                <li class="nav-item dropdown ml-xl-4">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownImportMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-user-ninja"></i> {% trans "Usuario"%}: {{ user.username }}
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownImportMenuLink">
+                        <a class="dropdown-item" href="{% url 'gamemonitor:update_profile' %}">{% trans "Mi perfil" %}</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">{% trans "Mis datos" %}</a>
+                        <a class="dropdown-item" href="#">{% trans "Progresos" %}</a>
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item" href="{% url 'logout' %}">
+                        {% trans "Cerrar sesión" %}
+                        </a>
+                    </div>
+                </li>
+
                 {% else %}
                     <a class="nav-link" href="{% url 'login' %}">{% trans "Iniciar sesión" %}</a>
                 {% endif %}
-            </div>
-        </ul>
-    </div>
+            </ul>
+  </div>
     {% if is_game_view %}
         <nav class="navbar navbar-dark navbar-navitem-game">
             <form class="form-inline" method="post" action="{% url 'exit_game' %}">
@@ -66,3 +77,4 @@
         </nav>
     {% endif %}
 </nav>
+

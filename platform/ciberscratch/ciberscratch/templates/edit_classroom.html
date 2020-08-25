@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% load i18n static %}
+{% block globalClass %} rounded-input-theme{% endblock %}
+{% block page_title %}{{ title }}{% endblock %}
+{% block content %}
+<div id="content-main">
+    <form method="post" class="form">
+        <table>
+            {{ form.as_table }}{% csrf_token %}
+        </table>
+        <div class="submit-row">
+            <input type="submit" value="{% trans 'Guardar' %}"
+                   class="btn btn-lg btn-primary btn-block text-uppercase font-weight-bold mt-2">
+        </div>
+    </form>
+</div>
+{% endblock %}
